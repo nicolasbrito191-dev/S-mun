@@ -58,14 +58,76 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Animação do Globo S!mun Girando na Horizontal */
+        /* Animação do Globo S!mun Girando na Horizontal (Sentido Horário) */
         @keyframes spin-horizontal {
-            from { transform: rotateY(0deg); }
-            to { transform: rotateY(360deg); }
+            from { transform: rotateY(360deg); }
+            to { transform: rotateY(0deg); }
         }
         .globe-spin {
             animation: spin-horizontal 4s linear infinite;
             display: inline-block;
+        }
+
+        /* Estilos das Revistas de Notícias */
+        .news-magazine-container {
+            perspective: 1500px;
+            width: 220px;
+            height: 300px;
+        }
+
+        .magazine {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+        }
+
+        .magazine-cover {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px 12px 12px 4px;
+            transform-origin: left;
+            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.05);
+            padding: 20px;
+        }
+
+        .magazine-page {
+            position: absolute;
+            width: 98%;
+            height: 96%;
+            top: 2%;
+            left: 1%;
+            background: #f8fafc;
+            border: 1px solid #f1f5f9;
+            border-radius: 2px 10px 10px 2px;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+
+        .news-magazine-container:hover .magazine-cover {
+            transform: rotateY(-145deg);
+        }
+
+        .news-magazine-container:hover .magazine-gear {
+            animation: spin-gear 3s linear infinite;
+        }
+
+        @keyframes spin-gear {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         /* Modal Styles */
@@ -150,6 +212,7 @@
                 <a href="#home" class="hover:text-blue-500 transition">Início</a>
                 <a href="#sobre" class="hover:text-blue-500 transition">A S!mun</a>
                 <a href="#comites" class="hover:text-blue-500 transition">Comitês</a>
+                <a href="#noticias" class="hover:text-blue-500 transition">Notícias</a>
                 <a href="#cronograma" class="hover:text-blue-500 transition">Cronograma</a>
                 <a href="#imagens-2025" class="hover:text-blue-500 transition">S!mun 2025</a>
                 <a href="#" class="un-blue text-white px-6 py-2 rounded-full hover:bg-blue-600 transition shadow-sm">Inscrições</a>
@@ -289,8 +352,84 @@
         </div>
     </section>
 
+    <!-- Secção de Notícias (Revistas) -->
+    <section id="noticias" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h3 class="text-4xl md:text-5xl font-bold mb-6">S!MUN News</h3>
+                <div class="w-20 h-1 un-blue mx-auto mb-6"></div>
+                <p class="text-gray-500 text-lg max-w-2xl mx-auto italic">Explore as últimas publicações e informativos do Colégio Ser!.</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-16">
+                <!-- Revista 1 -->
+                <div class="news-magazine-container">
+                    <div class="magazine">
+                        <div class="magazine-cover">
+                            <i class="fas fa-cog text-5xl text-slate-200 magazine-gear"></i>
+                            <div class="mt-8 w-3/4 h-1 bg-slate-100 rounded-full"></div>
+                            <div class="mt-4 w-1/2 h-1 bg-slate-100 rounded-full"></div>
+                            <p class="absolute bottom-6 text-[10px] font-bold text-slate-300 uppercase tracking-widest">Edição #01</p>
+                        </div>
+                        <div class="magazine-page text-center">
+                            <div class="opacity-10">
+                                <i class="fas fa-newspaper text-6xl text-blue-500 mb-4"></i>
+                                <div class="h-2 w-full bg-blue-100 rounded mb-2"></div>
+                                <div class="h-2 w-3/4 bg-blue-100 rounded mx-auto"></div>
+                            </div>
+                            <p class="absolute inset-x-4 bottom-10 text-[10px] text-slate-400">Conteúdo em elaboração...</p>
+                        </div>
+                    </div>
+                    <p class="mt-6 text-center font-bold text-slate-400">Boletim Informativo</p>
+                </div>
+
+                <!-- Revista 2 -->
+                <div class="news-magazine-container">
+                    <div class="magazine">
+                        <div class="magazine-cover">
+                            <i class="fas fa-cog text-5xl text-slate-200 magazine-gear"></i>
+                            <div class="mt-8 w-3/4 h-1 bg-slate-100 rounded-full"></div>
+                            <div class="mt-4 w-1/2 h-1 bg-slate-100 rounded-full"></div>
+                            <p class="absolute bottom-6 text-[10px] font-bold text-slate-300 uppercase tracking-widest">Edição #02</p>
+                        </div>
+                        <div class="magazine-page text-center">
+                            <div class="opacity-10">
+                                <i class="fas fa-globe text-6xl text-blue-500 mb-4"></i>
+                                <div class="h-2 w-full bg-blue-100 rounded mb-2"></div>
+                                <div class="h-2 w-3/4 bg-blue-100 rounded mx-auto"></div>
+                            </div>
+                            <p class="absolute inset-x-4 bottom-10 text-[10px] text-slate-400">Conteúdo em elaboração...</p>
+                        </div>
+                    </div>
+                    <p class="mt-6 text-center font-bold text-slate-400">Análise Diplomática</p>
+                </div>
+
+                <!-- Revista 3 -->
+                <div class="news-magazine-container">
+                    <div class="magazine">
+                        <div class="magazine-cover">
+                            <i class="fas fa-cog text-5xl text-slate-200 magazine-gear"></i>
+                            <div class="mt-8 w-3/4 h-1 bg-slate-100 rounded-full"></div>
+                            <div class="mt-4 w-1/2 h-1 bg-slate-100 rounded-full"></div>
+                            <p class="absolute bottom-6 text-[10px] font-bold text-slate-300 uppercase tracking-widest">Edição #03</p>
+                        </div>
+                        <div class="magazine-page text-center">
+                            <div class="opacity-10">
+                                <i class="fas fa-users text-6xl text-blue-500 mb-4"></i>
+                                <div class="h-2 w-full bg-blue-100 rounded mb-2"></div>
+                                <div class="h-2 w-3/4 bg-blue-100 rounded mx-auto"></div>
+                            </div>
+                            <p class="absolute inset-x-4 bottom-10 text-[10px] text-slate-400">Conteúdo em elaboração...</p>
+                        </div>
+                    </div>
+                    <p class="mt-6 text-center font-bold text-slate-400">Voz do Delegado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Secção de Cronograma -->
-    <section id="cronograma" class="py-24 bg-white">
+    <section id="cronograma" class="py-24 bg-gray-50 border-y border-gray-100">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <h3 class="text-4xl font-bold mb-4">Cronograma de Atividades</h3>
@@ -298,22 +437,22 @@
             </div>
             
             <div class="grid md:grid-cols-4 gap-4">
-                <div onclick="openModal('Fase de Inscrições', 'O cronograma exato de inscrições para 2026 será anunciado em breve pelo Colégio Ser!.')" class="schedule-item bg-gray-50 p-6 rounded-2xl border border-gray-100 cursor-pointer text-center">
+                <div onclick="openModal('Fase de Inscrições', 'O cronograma exato de inscrições para 2026 será anunciado em breve pelo Colégio Ser!.')" class="schedule-item bg-white p-6 rounded-2xl border border-gray-100 cursor-pointer text-center shadow-sm">
                     <div class="w-12 h-12 un-blue text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold">1</div>
                     <h5 class="font-bold mb-2">Inscrições</h5>
                     <p class="text-xs text-gray-400 uppercase">Fase Inicial</p>
                 </div>
-                <div onclick="openModal('Entrega de DPOs', 'O prazo para entrega de Documentos de Posição Oficial (DPOs) ainda não foi definido.')" class="schedule-item bg-gray-50 p-6 rounded-2xl border border-gray-100 cursor-pointer text-center">
+                <div onclick="openModal('Entrega de DPOs', 'O prazo para entrega de Documentos de Posição Oficial (DPOs) ainda não foi definido.')" class="schedule-item bg-white p-6 rounded-2xl border border-gray-100 cursor-pointer text-center shadow-sm">
                     <div class="w-12 h-12 un-blue text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold">2</div>
                     <h5 class="font-bold mb-2">Entrega DPOs</h5>
                     <p class="text-xs text-gray-400 uppercase">Preparação</p>
                 </div>
-                <div onclick="openModal('Dias de Debate', 'A data oficial da simulação será confirmada no calendário letivo do Colégio Ser!.')" class="schedule-item bg-gray-50 p-6 rounded-2xl border border-gray-100 cursor-pointer text-center">
+                <div onclick="openModal('Dias de Debate', 'A data oficial da simulação será confirmada no calendário letivo do Colégio Ser!.')" class="schedule-item bg-white p-6 rounded-2xl border border-gray-100 cursor-pointer text-center shadow-sm">
                     <div class="w-12 h-12 un-blue text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold">3</div>
                     <h5 class="font-bold mb-2">Debates</h5>
                     <p class="text-xs text-gray-400 uppercase">S!mun 2026</p>
                 </div>
-                <div onclick="openModal('Cerimônia Final', 'A cerimônia de encerramento e entrega de certificados ocorrerá ao final do evento.')" class="schedule-item bg-gray-50 p-6 rounded-2xl border border-gray-100 cursor-pointer text-center">
+                <div onclick="openModal('Cerimônia Final', 'A cerimônia de encerramento e entrega de certificados ocorrerá ao final do evento.')" class="schedule-item bg-white p-6 rounded-2xl border border-gray-100 cursor-pointer text-center shadow-sm">
                     <div class="w-12 h-12 un-blue text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold">4</div>
                     <h5 class="font-bold mb-2">Encerramento</h5>
                     <p class="text-xs text-gray-400 uppercase">Premiação</p>
