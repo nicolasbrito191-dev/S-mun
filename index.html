@@ -18,15 +18,25 @@
         .un-blue-text { color: #009edb; }
         .un-dark-blue { background-color: #0077b5; }
         
+        /* Ajuste de responsividade do Banner */
         #home {
             background-color: #002e5d; 
             background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), 
                               url('https://lh3.googleusercontent.com/d/12HnG67rj0CE2sTbHuhejKhwfh3ywJ97c');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
+            background-repeat: no-repeat;
+            /* No celular, removemos o 'fixed' que causa o erro */
+            background-attachment: scroll;
             transition: background-image 1s ease-in-out;
             position: relative;
+        }
+
+        /* O efeito 'fixed' só será aplicado em telas maiores (Tablets e PCs) */
+        @media (min-width: 768px) {
+            #home {
+                background-attachment: fixed;
+            }
         }
 
         .hero-content {
@@ -509,9 +519,9 @@
                  class="h-12 mx-auto mb-8 brightness-0 invert opacity-60">
             <p class="text-gray-500 text-sm max-w-lg mx-auto mb-12">Simulação das Nações Unidas do Colégio Ser!. Um compromisso com a formação de cidadãos globais e conscientes.</p>
             <div class="flex justify-center gap-8 text-2xl mb-12 text-gray-400">
-                <a href="#" class="hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="hover:text-white transition"><i class="fab fa-youtube"></i></a>
-                <a href="#" class="hover:text-white transition"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/colegio_ser/" target="_blank" class="hover:text-pink-500 transition"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/colegiosersorocaba" target="_blank" class="hover:text-red-500 transition"><i class="fab fa-youtube"></i></a>
+                <a href="https://pt-br.facebook.com/ColegioSer/" target="_blank" class="hover:text-blue-600 transition"><i class="fab fa-facebook"></i></a>
             </div>
             <div class="text-xs text-gray-600 border-t border-gray-800 pt-8">
                 &copy; 2026 Colégio Ser!. Todos os direitos reservados.
