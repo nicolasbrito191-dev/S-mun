@@ -6,37 +6,41 @@
     <title>S!mun 2026 | Colégio Ser! - ONU para além das guerras</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Fontes mais sofisticadas: Playfair para títulos, Inter para textos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-        
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
+            background-color: #f8fafc;
         }
 
-        .un-blue { background-color: #009edb; }
-        .un-blue-text { color: #009edb; }
-        .un-dark-blue { background-color: #0077b5; }
+        /* Aplicação da fonte serifada nos títulos */
+        h1, h2, h3, h4, h5, h6, .playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .un-blue { background-color: #005bbb; } /* Azul ONU um pouco mais escuro/sério */
+        .un-blue-text { color: #005bbb; }
+        .un-dark-blue { background-color: #003a7a; }
         
-        /* Ajuste de responsividade do Banner */
+        /* Banner sofisticado com overlay em degradê mais profundo */
         #home {
-            background-color: #002e5d; 
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), 
+            background-color: #0f172a; 
+            background-image: linear-gradient(to right, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.4) 100%), 
                               url('https://lh3.googleusercontent.com/d/12HnG67rj0CE2sTbHuhejKhwfh3ywJ97c');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            /* No celular, removemos o 'fixed' que causa o erro */
             background-attachment: scroll;
             transition: background-image 1s ease-in-out;
             position: relative;
         }
 
-        /* O efeito 'fixed' só será aplicado em telas maiores (Tablets e PCs) */
         @media (min-width: 768px) {
-            #home {
-                background-attachment: fixed;
-            }
+            #home { background-attachment: fixed; }
         }
 
         .hero-content {
@@ -44,45 +48,53 @@
             z-index: 10;
         }
 
-        .committee-card, .schedule-item, .gallery-item {
-            transition: all 0.3s ease;
+        /* Transições elegantes para cards */
+        .committee-card, .schedule-item {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
+            border: 1px solid #f1f5f9;
         }
 
         .committee-card:hover, .schedule-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+            border-color: #e2e8f0;
+        }
+
+        .gallery-item img {
+            transition: transform 0.7s ease-out, opacity 0.5s ease;
         }
 
         .logo-img {
-            max-height: 55px;
+            max-height: 50px;
             width: auto;
         }
 
         .fade-in {
-            animation: fadeIn 1.2s ease-out;
+            animation: fadeIn 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Animação do Globo S!mun Girando na Horizontal (Sentido Horário) */
+        /* Globo S!mun Girando */
         @keyframes spin-horizontal {
             from { transform: rotateY(360deg); }
             to { transform: rotateY(0deg); }
         }
         .globe-spin {
-            animation: spin-horizontal 4s linear infinite;
+            animation: spin-horizontal 5s linear infinite;
             display: inline-block;
         }
 
-        /* Estilos das Revistas de Notícias */
+        /* Revistas de Notícias (Design Editorial) */
         .news-magazine-container {
             perspective: 1500px;
-            width: 220px;
-            height: 300px;
+            width: 240px;
+            height: 320px;
+            margin: 0 auto;
         }
 
         .magazine {
@@ -90,25 +102,26 @@
             height: 100%;
             position: relative;
             transform-style: preserve-3d;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .magazine-cover {
             position: absolute;
             width: 100%;
             height: 100%;
-            background: white;
+            background: #ffffff;
             border: 1px solid #e2e8f0;
-            border-radius: 4px 12px 12px 4px;
+            border-left: 4px solid #005bbb; /* Lombada da revista */
+            border-radius: 2px 8px 8px 2px;
             transform-origin: left;
-            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 10;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            box-shadow: 5px 5px 15px rgba(0,0,0,0.05);
-            padding: 20px;
+            box-shadow: 8px 8px 20px rgba(0,0,0,0.06);
+            padding: 24px;
         }
 
         .magazine-page {
@@ -117,22 +130,24 @@
             height: 96%;
             top: 2%;
             left: 1%;
-            background: #f8fafc;
+            background: #fafafa;
             border: 1px solid #f1f5f9;
-            border-radius: 2px 10px 10px 2px;
+            border-radius: 2px 6px 6px 2px;
             z-index: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 15px;
+            padding: 20px;
+            box-shadow: inset -2px 0 5px rgba(0,0,0,0.02);
         }
 
         .news-magazine-container:hover .magazine-cover {
-            transform: rotateY(-145deg);
+            transform: rotateY(-150deg);
+            box-shadow: -8px 8px 20px rgba(0,0,0,0.08);
         }
 
         .news-magazine-container:hover .magazine-gear {
-            animation: spin-gear 3s linear infinite;
+            animation: spin-gear 4s linear infinite;
         }
 
         @keyframes spin-gear {
@@ -140,92 +155,93 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Modal Styles */
+        /* Modal Styles Glassmorphism */
         #status-modal {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(15, 23, 42, 0.6);
             z-index: 100;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
-
-        .modal-content {
-            perspective: 1000px;
+        
+        /* Linha do tempo visual */
+        .timeline-line {
+            position: absolute;
+            top: 24px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: #e2e8f0;
+            z-index: 0;
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="text-slate-800">
 
-    <!-- Modal Unificado para Cronograma e Comitês -->
+    <!-- Modal Unificado -->
     <div id="status-modal" onclick="closeModal()">
-        <div class="bg-white p-12 rounded-[3rem] text-center shadow-2xl max-w-md mx-4 fade-in relative overflow-hidden" onclick="event.stopPropagation()">
-            <!-- Decoração de Fundo -->
-            <div class="absolute -top-10 -right-10 w-32 h-32 un-blue opacity-5 rounded-full"></div>
+        <div class="bg-white p-12 rounded-2xl text-center shadow-[0_20px_50px_rgba(0,0,0,0.2)] max-w-md mx-4 fade-in relative overflow-hidden border border-slate-100" onclick="event.stopPropagation()">
+            <div class="absolute top-0 left-0 w-full h-2 un-blue"></div>
             
-            <!-- Elementos Visuais do Modal -->
-            <div class="relative z-10">
-                <div class="mb-6 flex justify-center items-center gap-4">
-                    <i class="fas fa-cog fa-spin text-4xl text-gray-300"></i>
-                    <span class="text-xl font-bold uppercase tracking-widest text-gray-400">Em processo</span>
-                    <i class="fas fa-cog fa-spin text-4xl text-gray-300" style="animation-direction: reverse;"></i>
+            <div class="relative z-10 mt-4">
+                <div class="mb-8 flex justify-center items-center gap-4">
+                    <i class="fas fa-cog fa-spin text-3xl text-slate-300"></i>
+                    <span class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">Status: Em processo</span>
+                    <i class="fas fa-cog fa-spin text-3xl text-slate-300" style="animation-direction: reverse;"></i>
                 </div>
 
-                <!-- Ícone do Delegado no Púpito -->
-                <div class="relative mb-8 flex flex-col items-center">
-                    <!-- Delegado (Ícone Humano) -->
-                    <i class="fas fa-user-tie text-5xl un-blue-text mb-1"></i>
-                    <!-- Púpito de Palestra -->
-                    <div class="w-24 h-16 bg-gray-800 rounded-t-lg relative flex items-center justify-center border-b-4 border-gray-600 shadow-lg">
-                        <!-- Logo S!mun no Púpito com Globo Giratório -->
-                        <div class="bg-white p-1 rounded-full shadow-inner flex items-center justify-center">
-                            <i class="fas fa-globe-americas text-blue-500 globe-spin"></i>
+                <div class="relative mb-10 flex flex-col items-center">
+                    <i class="fas fa-user-tie text-5xl text-slate-700 mb-2"></i>
+                    <div class="w-28 h-12 bg-slate-800 rounded-t-sm relative flex items-center justify-center shadow-lg border-b-4 border-slate-600">
+                        <div class="bg-white p-1.5 rounded-full shadow-inner flex items-center justify-center">
+                            <i class="fas fa-globe-americas text-blue-600 text-lg globe-spin"></i>
                         </div>
                     </div>
                 </div>
 
-                <h3 id="modal-title" class="text-2xl font-bold mb-3 text-gray-900 leading-tight">Acesso em Breve</h3>
-                <p id="modal-desc" class="text-gray-500 mb-8 leading-relaxed">O Colégio Ser! está preparando as diretrizes finais para este ambiente diplomático.</p>
+                <h3 id="modal-title" class="text-3xl font-bold mb-4 text-slate-900 leading-tight playfair">Acesso em Breve</h3>
+                <p id="modal-desc" class="text-slate-500 mb-10 leading-relaxed font-light">O Colégio Ser! está elaborando as diretrizes oficiais para este comitê.</p>
                 
-                <button onclick="closeModal()" class="un-blue text-white w-full py-4 rounded-2xl font-bold hover:bg-blue-600 transition shadow-lg flex items-center justify-center gap-2">
-                    <i class="fas fa-check-circle"></i> Voltar para a S!mun
+                <button onclick="closeModal()" class="un-blue text-white w-full py-4 rounded-xl font-medium tracking-wide hover:bg-blue-800 transition-colors shadow-md flex items-center justify-center gap-2">
+                    Retornar à página
                 </button>
             </div>
         </div>
     </div>
 
     <!-- Barra de Topo -->
-    <div class="un-dark-blue text-white py-2 px-6 text-[10px] md:text-xs flex justify-between items-center font-medium tracking-wide">
-        <span>COLÉGIO SER! - SIMULAÇÃO DAS NAÇÕES UNIDAS 2026</span>
+    <div class="un-dark-blue text-slate-200 py-2 px-6 text-[10px] md:text-xs flex justify-between items-center font-medium tracking-[0.1em] uppercase">
+        <span>Colégio Ser! — Departamento de Simulação das Nações Unidas</span>
+        <span>Edição 2026</span>
     </div>
 
     <!-- Navegação -->
-    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-md border-b border-gray-100">
-        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <div class="flex items-center gap-4">
-                <div class="flex items-center gap-3">
-                    <img src="https://lh3.googleusercontent.com/d/1x0CMSY5KBchMh7nQ7OGh3RYxx9kIloLw" 
-                         alt="S!mun Logo" 
-                         class="logo-img"
-                         id="main-logo"
-                         onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Logo_of_the_United_Nations.svg/640px-Logo_of_the_United_Nations.svg.png'">
-                </div>
-                <div class="border-l pl-4 border-gray-200">
-                    <h1 class="font-bold text-xl leading-none un-blue-text">S!MUN 2026</h1>
-                    <p class="text-[9px] tracking-[0.2em] text-gray-400 uppercase font-bold">Colégio Ser!</p>
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-200">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-5">
+                <img src="https://lh3.googleusercontent.com/d/1x0CMSY5KBchMh7nQ7OGh3RYxx9kIloLw" 
+                     alt="S!mun Logo" 
+                     class="logo-img"
+                     id="main-logo"
+                     onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Logo_of_the_United_Nations.svg/640px-Logo_of_the_United_Nations.svg.png'">
+                <div class="border-l border-slate-300 pl-5">
+                    <h1 class="font-bold text-xl leading-none un-blue-text playfair tracking-wide">S!MUN 2026</h1>
+                    <p class="text-[9px] tracking-[0.25em] text-slate-500 uppercase font-medium mt-1">Colégio Ser!</p>
                 </div>
             </div>
             
-            <div id="desktop-menu" class="hidden md:flex gap-8 font-bold text-xs uppercase text-gray-600">
-                <a href="#home" class="hover:text-blue-500 transition">Início</a>
-                <a href="#sobre" class="hover:text-blue-500 transition">A S!mun</a>
-                <a href="#comites" class="hover:text-blue-500 transition">Comitês</a>
-                <a href="#noticias" class="hover:text-blue-500 transition">Notícias</a>
-                <a href="#cronograma" class="hover:text-blue-500 transition">Cronograma</a>
-                <a href="#imagens-2025" class="hover:text-blue-500 transition">S!mun 2025</a>
-                <a href="#" class="un-blue text-white px-6 py-2 rounded-full hover:bg-blue-600 transition shadow-sm">Inscrições</a>
+            <div id="desktop-menu" class="hidden md:flex gap-8 font-medium text-xs uppercase tracking-wide text-slate-600 items-center">
+                <a href="#home" class="hover:text-blue-600 transition-colors">Início</a>
+                <a href="#sobre" class="hover:text-blue-600 transition-colors">O Evento</a>
+                <a href="#comites" class="hover:text-blue-600 transition-colors">Comitês</a>
+                <a href="#noticias" class="hover:text-blue-600 transition-colors">Notícias</a>
+                <a href="#cronograma" class="hover:text-blue-600 transition-colors">Agenda</a>
+                <a href="#imagens-2025" class="hover:text-blue-600 transition-colors">Galeria</a>
+                <a href="#" class="border border-blue-600 text-blue-600 px-6 py-2 rounded hover:bg-blue-600 hover:text-white transition-all">Inscrições</a>
             </div>
 
             <button class="md:hidden text-2xl un-blue-text" onclick="toggleMenu()">
@@ -234,16 +250,21 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="h-[85vh] flex items-center text-white px-6">
+    <!-- Secção Hero -->
+    <section id="home" class="h-[80vh] flex items-center text-white px-6">
         <div class="container mx-auto hero-content fade-in">
-            <div class="max-w-4xl">
-                <span class="bg-blue-600 px-4 py-1 rounded text-xs font-bold mb-6 inline-block uppercase tracking-[0.2em]">Tema Central</span>
-                <h2 class="text-5xl md:text-8xl font-bold mb-6 leading-none">ONU para além das guerras</h2>
-                <p class="text-lg md:text-2xl mb-10 text-gray-100 leading-relaxed max-w-2xl">Debatendo as crises invisíveis e os desafios estruturais que definem o desenvolvimento global em 2026 no Colégio Ser!.</p>
-                <div class="flex flex-wrap gap-5">
-                    <a href="#comites" class="bg-white text-blue-900 px-10 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition flex items-center gap-3 shadow-xl">
-                        Ver Comitês <i class="fas fa-arrow-down text-sm"></i>
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-3 mb-6">
+                    <span class="w-8 h-[1px] bg-blue-400"></span>
+                    <span class="text-xs font-medium uppercase tracking-[0.3em] text-blue-300">Resolução 2026</span>
+                </div>
+                <h2 class="text-5xl md:text-7xl font-bold mb-8 leading-tight playfair text-white">ONU para além das guerras</h2>
+                <p class="text-lg md:text-xl mb-12 text-slate-300 leading-relaxed font-light max-w-2xl">
+                    Debatendo as crises invisíveis e os desafios estruturais que definem o desenvolvimento diplomático e global no Colégio Ser!.
+                </p>
+                <div class="flex flex-wrap gap-6">
+                    <a href="#comites" class="bg-white text-slate-900 px-8 py-4 rounded font-medium text-sm hover:bg-slate-100 transition-colors flex items-center gap-3 uppercase tracking-wide">
+                        Explorar Comitês <i class="fas fa-arrow-down text-blue-600"></i>
                     </a>
                 </div>
             </div>
@@ -251,34 +272,36 @@
     </section>
 
     <!-- Secção Sobre -->
-    <section id="sobre" class="py-24 bg-white">
+    <section id="sobre" class="py-32 bg-white">
         <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-20 items-center">
-                <div>
-                    <h3 class="text-xs font-bold un-blue-text tracking-[0.3em] uppercase mb-4">Experiência Diplomática</h3>
-                    <h4 class="text-4xl md:text-5xl font-bold mb-8 text-gray-900">Educação que Transforma</h4>
-                    <p class="text-lg text-gray-600 leading-relaxed mb-6">
-                        A S!mun 2026 do Colégio Ser! convida os delegados a ampliarem a sua visão sobre o papel das Nações Unidas. Num mundo focado em conflitos armados, olhamos para as vitórias e desafios da diplomacia no ambiente, na tecnologia e nos direitos fundamentais.
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div class="pr-0 lg:pr-10">
+                    <h3 class="text-xs font-semibold text-blue-600 tracking-[0.2em] uppercase mb-4">Experiência Diplomática</h3>
+                    <h4 class="text-4xl md:text-5xl font-bold mb-8 text-slate-900 playfair leading-tight">Educação que forma líderes globais</h4>
+                    <p class="text-lg text-slate-600 leading-relaxed mb-6 font-light">
+                        A S!mun 2026 do Colégio Ser! convida os delegados a ampliarem a sua visão sobre o papel das Nações Unidas. Num mundo frequentemente focado em conflitos armados, voltamos nosso olhar analítico para as vitórias e os intensos desafios da diplomacia no meio ambiente, na tecnologia e na garantia dos direitos fundamentais.
                     </p>
-                    <div class="grid grid-cols-3 gap-6 border-t border-gray-100 pt-8 mt-10">
+                    <div class="grid grid-cols-3 gap-8 border-t border-slate-200 pt-10 mt-10">
                         <div>
-                            <span class="block text-4xl font-bold un-blue-text">05</span>
-                            <span class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Comitês</span>
+                            <span class="block text-4xl font-bold text-slate-800 playfair mb-1">05</span>
+                            <span class="text-[10px] text-slate-500 uppercase font-medium tracking-widest">Comitês<br>Oficiais</span>
                         </div>
                         <div>
-                            <span class="block text-4xl font-bold un-blue-text">2026</span>
-                            <span class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Edição</span>
+                            <span class="block text-4xl font-bold text-slate-800 playfair mb-1">2026</span>
+                            <span class="text-[10px] text-slate-500 uppercase font-medium tracking-widest">Ano<br>Letivo</span>
                         </div>
                         <div>
-                            <span class="block text-4xl font-bold un-blue-text">Ser!</span>
-                            <span class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Inovação</span>
+                            <span class="block text-4xl font-bold text-slate-800 playfair mb-1">Ser!</span>
+                            <span class="text-[10px] text-slate-500 uppercase font-medium tracking-widest">Excelência<br>Acadêmica</span>
                         </div>
                     </div>
                 </div>
                 <div class="relative">
-                    <div class="absolute -top-6 -left-6 w-32 h-32 un-blue opacity-5 rounded-full"></div>
-                    <div class="bg-gray-200 rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[4/3]">
-                        <img src="https://lh3.googleusercontent.com/d/1zz1FVLETmPPM-1JxWLGOiRNWL8FikQsH" alt="Educação que Transforma" class="w-full h-full object-cover">
+                    <div class="absolute -top-8 -right-8 w-64 h-64 bg-slate-50 rounded-full z-0"></div>
+                    <div class="absolute -bottom-8 -left-8 w-32 h-32 border border-blue-200 rounded-full z-0"></div>
+                    <!-- Imagem com proporção editorial e borda refinada -->
+                    <div class="relative z-10 bg-white p-3 shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-2xl">
+                        <img src="https://lh3.googleusercontent.com/d/1zz1FVLETmPPM-1JxWLGOiRNWL8FikQsH" alt="Educação que Transforma" class="w-full aspect-[4/3] object-cover rounded-xl">
                     </div>
                 </div>
             </div>
@@ -286,75 +309,93 @@
     </section>
 
     <!-- Grelha de Comitês -->
-    <section id="comites" class="py-24 bg-gray-50 border-t border-gray-100">
+    <section id="comites" class="py-32 bg-slate-50 border-t border-slate-200">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-20">
-                <h3 class="text-4xl md:text-5xl font-bold mb-6">Os Comitês 2026</h3>
-                <div class="w-20 h-1 un-blue mx-auto mb-6"></div>
-                <p class="text-gray-500 text-lg max-w-2xl mx-auto italic">Explore os temas e desafios que cada delegação enfrentará nesta edição no Colégio Ser!.</p>
+            <div class="text-center mb-24 max-w-3xl mx-auto">
+                <span class="text-xs font-semibold text-blue-600 tracking-[0.2em] uppercase mb-4 block">Agenda Oficial</span>
+                <h3 class="text-4xl md:text-5xl font-bold mb-6 playfair text-slate-900">Os Comitês em Pauta</h3>
+                <div class="w-16 h-1 bg-blue-600 mx-auto mb-8"></div>
+                <p class="text-slate-600 text-lg font-light leading-relaxed">Explore os temas cruciais e os complexos desafios diplomáticos que cada delegação enfrentará nesta edição estruturada pelo Colégio Ser!.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                 <!-- PNUMA -->
-                <div onclick="openModal('PNUMA', 'Os guias de estudo sobre Petróleo e Plásticos estão sendo revisados pela mesa diretora do Colégio Ser!.')" class="committee-card bg-white p-8 rounded-3xl shadow-sm border-t-8 border-green-500">
-                    <div class="flex justify-between items-start mb-6">
-                        <span class="text-xs font-black un-blue-text tracking-widest">PNUMA</span>
-                        <i class="fas fa-leaf text-green-500 text-2xl"></i>
+                <div onclick="openModal('Comitê PNUMA', 'Os guias oficiais de estudo sobre a crise do Petróleo e Plásticos estão sendo validados pela mesa diretora do Colégio Ser!.')" class="committee-card bg-white p-10 rounded-2xl relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-green-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                    <div class="flex justify-between items-center mb-8">
+                        <span class="text-xs font-bold text-slate-400 tracking-[0.2em]">PNUMA</span>
+                        <div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-green-600">
+                            <i class="fas fa-leaf text-xl"></i>
+                        </div>
                     </div>
-                    <h4 class="text-xl font-bold mb-4 text-gray-800">Petróleo e Plásticos</h4>
-                    <p class="text-sm text-gray-500 leading-relaxed mb-6">Impacto sistêmico nos Oceanos e a busca por soluções globais para a poluição marinha.</p>
-                    <span class="text-xs font-bold text-gray-400 uppercase tracking-tighter">Clique para ver detalhes <i class="fas fa-chevron-right ml-1"></i></span>
+                    <h4 class="text-2xl font-bold mb-4 text-slate-900 playfair">Petróleo e Plásticos</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-8 font-light">Análise do impacto sistêmico nos Oceanos e a busca por regulamentações globais eficazes para a poluição marinha.</p>
+                    <span class="text-xs font-medium text-blue-600 uppercase tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all">Acessar Documento <i class="fas fa-arrow-right"></i></span>
                 </div>
 
                 <!-- ECOSOC -->
-                <div onclick="openModal('ECOSOC', 'As discussões econômicas sobre Medidas Tarifárias estão em fase final de preparação pelo Colégio Ser!.')" class="committee-card bg-white p-8 rounded-3xl shadow-sm border-t-8 border-blue-900">
-                    <div class="flex justify-between items-start mb-6">
-                        <span class="text-xs font-black un-blue-text tracking-widest">ECOSOC</span>
-                        <i class="fas fa-chart-line text-blue-900 text-2xl"></i>
+                <div onclick="openModal('Comitê ECOSOC', 'As diretrizes de debate econômico sobre Medidas Tarifárias estão na fase de revisão final.')" class="committee-card bg-white p-10 rounded-2xl relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-blue-800 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                    <div class="flex justify-between items-center mb-8">
+                        <span class="text-xs font-bold text-slate-400 tracking-[0.2em]">ECOSOC</span>
+                        <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-800">
+                            <i class="fas fa-chart-line text-xl"></i>
+                        </div>
                     </div>
-                    <h4 class="text-xl font-bold mb-4 text-gray-800">Medidas Tarifárias</h4>
-                    <p class="text-sm text-gray-500 leading-relaxed mb-6">Impactos na economia global e o rearranjo das relações diplomáticas contemporâneas.</p>
-                    <span class="text-xs font-bold text-gray-400 uppercase tracking-tighter">Clique para ver detalhes <i class="fas fa-chevron-right ml-1"></i></span>
+                    <h4 class="text-2xl font-bold mb-4 text-slate-900 playfair">Medidas Tarifárias</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-8 font-light">Discussão sobre os impactos na macroeconomia global e o rearranjo das delicadas relações diplomáticas.</p>
+                    <span class="text-xs font-medium text-blue-600 uppercase tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all">Acessar Documento <i class="fas fa-arrow-right"></i></span>
                 </div>
 
                 <!-- CDH -->
-                <div onclick="openModal('CDH', 'A agenda de direitos humanos e globalização econômica será publicada em breve pelo Colégio Ser!.')" class="committee-card bg-white p-8 rounded-3xl shadow-sm border-t-8 border-red-600">
-                    <div class="flex justify-between items-start mb-6">
-                        <span class="text-xs font-black un-blue-text tracking-widest">CDH</span>
-                        <i class="fas fa-hand-holding-heart text-red-600 text-2xl"></i>
+                <div onclick="openModal('Comitê CDH', 'A pauta que correlaciona direitos humanos e integração econômica será publicada oficialmente em breve.')" class="committee-card bg-white p-10 rounded-2xl relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-red-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                    <div class="flex justify-between items-center mb-8">
+                        <span class="text-xs font-bold text-slate-400 tracking-[0.2em]">CDH</span>
+                        <div class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center text-red-600">
+                            <i class="fas fa-hand-holding-heart text-xl"></i>
+                        </div>
                     </div>
-                    <h4 class="text-xl font-bold mb-4 text-gray-800">Globalização Econômica</h4>
-                    <p class="text-sm text-gray-500 leading-relaxed mb-6">Análise sobre como a integração econômica mundial afeta a garantia dos direitos humanos.</p>
-                    <span class="text-xs font-bold text-gray-400 uppercase tracking-tighter">Clique para ver detalhes <i class="fas fa-chevron-right ml-1"></i></span>
+                    <h4 class="text-2xl font-bold mb-4 text-slate-900 playfair">Globalização Econômica</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-8 font-light">Debate crítico sobre como a rápida integração econômica mundial compromete ou fomenta os direitos humanos.</p>
+                    <span class="text-xs font-medium text-blue-600 uppercase tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all">Acessar Documento <i class="fas fa-arrow-right"></i></span>
                 </div>
 
                 <!-- UNESCO -->
-                <div onclick="openModal('UNESCO', 'Os tópicos de tráfico ilícito de bens e direitos culturais femininos estão em processo de edição final.')" class="committee-card bg-white p-8 rounded-3xl shadow-sm border-t-8 border-orange-500">
-                    <div class="flex justify-between items-start mb-6">
-                        <span class="text-xs font-black un-blue-text tracking-widest">UNESCO</span>
-                        <i class="fas fa-landmark text-orange-500 text-2xl"></i>
+                <div onclick="openModal('Comitê UNESCO', 'Os dossiês sobre patrimônio oculto e direitos culturais estão em diagramação.')" class="committee-card bg-white p-10 rounded-2xl relative overflow-hidden group lg:col-span-1">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-amber-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                    <div class="flex justify-between items-center mb-8">
+                        <span class="text-xs font-bold text-slate-400 tracking-[0.2em]">UNESCO</span>
+                        <div class="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center text-amber-600">
+                            <i class="fas fa-landmark text-xl"></i>
+                        </div>
                     </div>
-                    <h4 class="text-xl font-bold mb-4 text-gray-800">Cultura e Gênero</h4>
-                    <p class="text-sm text-gray-500 leading-relaxed mb-4">• Tráfico ilícito de bens culturais.</p>
-                    <p class="text-sm text-gray-500 leading-relaxed mb-6">• Direitos culturais das mulheres.</p>
-                    <span class="text-xs font-bold text-gray-400 uppercase tracking-tighter">Clique para ver detalhes <i class="fas fa-chevron-right ml-1"></i></span>
+                    <h4 class="text-2xl font-bold mb-4 text-slate-900 playfair">Cultura e Gênero</h4>
+                    <ul class="text-sm text-slate-600 leading-relaxed mb-8 font-light space-y-2">
+                        <li class="flex gap-2"><span class="text-amber-500">•</span> Tráfico ilícito de bens culturais.</li>
+                        <li class="flex gap-2"><span class="text-amber-500">•</span> Proteção dos direitos culturais das mulheres.</li>
+                    </ul>
+                    <span class="text-xs font-medium text-blue-600 uppercase tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all">Acessar Documento <i class="fas fa-arrow-right"></i></span>
                 </div>
 
                 <!-- CSTD -->
-                <div onclick="openModal('CSTD', 'O guia técnico sobre Algoritmos e Democracia está sendo finalizado pela comissão de ciência do Colégio Ser!.')" class="committee-card bg-white p-8 rounded-3xl shadow-sm border-t-8 border-cyan-400 lg:col-span-2">
-                    <div class="flex justify-between items-start mb-6">
-                        <span class="text-xs font-black un-blue-text tracking-widest">CSTD</span>
-                        <i class="fas fa-robot text-cyan-400 text-2xl"></i>
-                    </div>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <h4 class="text-xl font-bold mb-4 text-gray-800">Algoritmos e Democracia</h4>
-                            <p class="text-sm text-gray-500 leading-relaxed">A interferência de algoritmos manipulados nos processos democráticos e a soberania digital.</p>
+                <div onclick="openModal('Comitê CSTD', 'O documento base de ciência e tecnologia será divulgado após aprovação técnica.')" class="committee-card bg-white p-10 rounded-2xl relative overflow-hidden group lg:col-span-2 flex flex-col justify-center">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-cyan-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-12 h-12 rounded-full bg-cyan-50 flex items-center justify-center text-cyan-600">
+                                    <i class="fas fa-microchip text-xl"></i>
+                                </div>
+                                <span class="text-xs font-bold text-slate-400 tracking-[0.2em]">CSTD</span>
+                            </div>
+                            <h4 class="text-2xl font-bold mb-4 text-slate-900 playfair">Algoritmos e Democracia</h4>
+                            <p class="text-sm text-slate-600 leading-relaxed font-light max-w-lg">Investigação profunda sobre a manipulação algorítmica em processos eleitorais e os desafios para manter a soberania digital das nações.</p>
                         </div>
-                        <div class="flex items-center">
-                            <button class="bg-cyan-50 text-cyan-700 px-6 py-4 rounded-2xl font-bold text-xs w-full hover:bg-cyan-100 transition flex items-center justify-center gap-3">
-                                <i class="fas fa-clock"></i> GUIA TÉCNICO EM BREVE
-                            </button>
+                        <div class="shrink-0 pt-4 md:pt-0">
+                            <div class="border border-slate-200 text-slate-500 px-6 py-4 rounded text-xs font-medium uppercase tracking-widest flex items-center gap-3">
+                                <i class="fas fa-lock text-slate-400"></i> Restrito
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -363,148 +404,181 @@
     </section>
 
     <!-- Secção de Notícias (Revistas) -->
-    <section id="noticias" class="py-24 bg-white">
+    <section id="noticias" class="py-32 bg-white">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-20">
-                <h3 class="text-4xl md:text-5xl font-bold mb-6">S!MUN News</h3>
-                <div class="w-20 h-1 un-blue mx-auto mb-6"></div>
-                <p class="text-gray-500 text-lg max-w-2xl mx-auto italic">Explore as últimas publicações e informativos do Colégio Ser!.</p>
+            <div class="text-center mb-24">
+                <span class="text-xs font-semibold text-blue-600 tracking-[0.2em] uppercase mb-4 block">Publicações Oficiais</span>
+                <h3 class="text-4xl md:text-5xl font-bold mb-6 playfair text-slate-900">S!MUN News</h3>
+                <div class="w-16 h-1 bg-blue-600 mx-auto mb-8"></div>
+                <p class="text-slate-600 text-lg font-light max-w-2xl mx-auto">Explore as análises e editoriais produzidos pelo comitê de imprensa do Colégio Ser!.</p>
             </div>
 
-            <div class="flex flex-wrap justify-center gap-16">
+            <div class="flex flex-wrap justify-center gap-12 md:gap-20">
                 <!-- Revista 1 -->
-                <div class="news-magazine-container">
+                <div class="news-magazine-container cursor-pointer" onclick="openModal('Publicação em Breve', 'Esta edição da revista S!mun News está sendo diagramada pela equipe de comunicação.')">
                     <div class="magazine">
-                        <div class="magazine-cover">
-                            <i class="fas fa-cog text-5xl text-slate-200 magazine-gear"></i>
-                            <div class="mt-8 w-3/4 h-1 bg-slate-100 rounded-full"></div>
-                            <div class="mt-4 w-1/2 h-1 bg-slate-100 rounded-full"></div>
-                            <p class="absolute bottom-6 text-[10px] font-bold text-slate-300 uppercase tracking-widest">Edição #01</p>
+                        <div class="magazine-cover bg-slate-50 border-slate-200 border-l-slate-800">
+                            <i class="fas fa-cog text-4xl text-slate-300 magazine-gear mb-8"></i>
+                            <div class="w-full px-4 mb-2">
+                                <div class="h-0.5 bg-slate-200 w-full mb-2"></div>
+                                <div class="h-0.5 bg-slate-200 w-2/3 mx-auto"></div>
+                            </div>
+                            <div class="mt-auto border-t border-slate-200 w-full pt-4 text-center">
+                                <p class="text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em]">S!MUN Vol. I</p>
+                            </div>
                         </div>
                         <div class="magazine-page text-center">
-                            <div class="opacity-10">
-                                <i class="fas fa-newspaper text-6xl text-blue-500 mb-4"></i>
-                                <div class="h-2 w-full bg-blue-100 rounded mb-2"></div>
-                                <div class="h-2 w-3/4 bg-blue-100 rounded mx-auto"></div>
+                            <div class="opacity-20 flex flex-col items-center">
+                                <i class="fas fa-align-left text-4xl text-slate-400 mb-6"></i>
+                                <div class="w-24 h-1 bg-slate-300 rounded mb-2"></div>
+                                <div class="w-16 h-1 bg-slate-300 rounded"></div>
                             </div>
-                            <p class="absolute inset-x-4 bottom-10 text-[10px] text-slate-400">Conteúdo em elaboração...</p>
                         </div>
                     </div>
-                    <p class="mt-6 text-center font-bold text-slate-400">Boletim Informativo</p>
+                    <p class="mt-8 text-center font-medium text-sm text-slate-600 tracking-wide">Boletim Informativo</p>
                 </div>
 
                 <!-- Revista 2 -->
-                <div class="news-magazine-container">
+                <div class="news-magazine-container cursor-pointer" onclick="openModal('Publicação em Breve', 'Esta edição da revista S!mun News está sendo diagramada pela equipe de comunicação.')">
                     <div class="magazine">
-                        <div class="magazine-cover">
-                            <i class="fas fa-cog text-5xl text-slate-200 magazine-gear"></i>
-                            <div class="mt-8 w-3/4 h-1 bg-slate-100 rounded-full"></div>
-                            <div class="mt-4 w-1/2 h-1 bg-slate-100 rounded-full"></div>
-                            <p class="absolute bottom-6 text-[10px] font-bold text-slate-300 uppercase tracking-widest">Edição #02</p>
+                        <div class="magazine-cover bg-slate-50 border-slate-200 border-l-blue-600">
+                            <i class="fas fa-cog text-4xl text-slate-300 magazine-gear mb-8"></i>
+                            <div class="w-full px-4 mb-2">
+                                <div class="h-0.5 bg-slate-200 w-full mb-2"></div>
+                                <div class="h-0.5 bg-slate-200 w-3/4 mx-auto"></div>
+                            </div>
+                            <div class="mt-auto border-t border-slate-200 w-full pt-4 text-center">
+                                <p class="text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em]">S!MUN Vol. II</p>
+                            </div>
                         </div>
                         <div class="magazine-page text-center">
-                            <div class="opacity-10">
-                                <i class="fas fa-globe text-6xl text-blue-500 mb-4"></i>
-                                <div class="h-2 w-full bg-blue-100 rounded mb-2"></div>
-                                <div class="h-2 w-3/4 bg-blue-100 rounded mx-auto"></div>
+                            <div class="opacity-20 flex flex-col items-center">
+                                <i class="fas fa-globe text-4xl text-blue-600 mb-6"></i>
+                                <div class="w-24 h-1 bg-slate-300 rounded mb-2"></div>
+                                <div class="w-16 h-1 bg-slate-300 rounded"></div>
                             </div>
-                            <p class="absolute inset-x-4 bottom-10 text-[10px] text-slate-400">Conteúdo em elaboração...</p>
                         </div>
                     </div>
-                    <p class="mt-6 text-center font-bold text-slate-400">Análise Diplomática</p>
+                    <p class="mt-8 text-center font-medium text-sm text-slate-600 tracking-wide">Análise Diplomática</p>
                 </div>
 
                 <!-- Revista 3 -->
-                <div class="news-magazine-container">
+                <div class="news-magazine-container cursor-pointer" onclick="openModal('Publicação em Breve', 'Esta edição da revista S!mun News está sendo diagramada pela equipe de comunicação.')">
                     <div class="magazine">
-                        <div class="magazine-cover">
-                            <i class="fas fa-cog text-5xl text-slate-200 magazine-gear"></i>
-                            <div class="mt-8 w-3/4 h-1 bg-slate-100 rounded-full"></div>
-                            <div class="mt-4 w-1/2 h-1 bg-slate-100 rounded-full"></div>
-                            <p class="absolute bottom-6 text-[10px] font-bold text-slate-300 uppercase tracking-widest">Edição #03</p>
+                        <div class="magazine-cover bg-slate-50 border-slate-200 border-l-green-600">
+                            <i class="fas fa-cog text-4xl text-slate-300 magazine-gear mb-8"></i>
+                            <div class="w-full px-4 mb-2">
+                                <div class="h-0.5 bg-slate-200 w-full mb-2"></div>
+                                <div class="h-0.5 bg-slate-200 w-1/2 mx-auto"></div>
+                            </div>
+                            <div class="mt-auto border-t border-slate-200 w-full pt-4 text-center">
+                                <p class="text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em]">S!MUN Vol. III</p>
+                            </div>
                         </div>
                         <div class="magazine-page text-center">
-                            <div class="opacity-10">
-                                <i class="fas fa-users text-6xl text-blue-500 mb-4"></i>
-                                <div class="h-2 w-full bg-blue-100 rounded mb-2"></div>
-                                <div class="h-2 w-3/4 bg-blue-100 rounded mx-auto"></div>
+                            <div class="opacity-20 flex flex-col items-center">
+                                <i class="fas fa-users text-4xl text-green-600 mb-6"></i>
+                                <div class="w-24 h-1 bg-slate-300 rounded mb-2"></div>
+                                <div class="w-16 h-1 bg-slate-300 rounded"></div>
                             </div>
-                            <p class="absolute inset-x-4 bottom-10 text-[10px] text-slate-400">Conteúdo em elaboração...</p>
                         </div>
                     </div>
-                    <p class="mt-6 text-center font-bold text-slate-400">Voz do Delegado</p>
+                    <p class="mt-8 text-center font-medium text-sm text-slate-600 tracking-wide">Voz do Delegado</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Secção de Cronograma -->
-    <section id="cronograma" class="py-24 bg-gray-50 border-y border-gray-100">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h3 class="text-4xl font-bold mb-4">Cronograma de Atividades</h3>
-                <p class="text-gray-500">Acompanhe as fases da S!mun 2026 no Colégio Ser!.</p>
+    <section id="cronograma" class="py-32 bg-slate-50 border-t border-slate-200 overflow-hidden">
+        <div class="container mx-auto px-6 relative">
+            <div class="text-center mb-24 relative z-10">
+                <span class="text-xs font-semibold text-blue-600 tracking-[0.2em] uppercase mb-4 block">Planejamento Oficial</span>
+                <h3 class="text-4xl md:text-5xl font-bold mb-6 playfair text-slate-900">Agenda S!mun 2026</h3>
+                <div class="w-16 h-1 bg-blue-600 mx-auto"></div>
             </div>
             
-            <div class="grid md:grid-cols-4 gap-4">
-                <div onclick="openModal('Fase de Inscrições', 'O cronograma exato de inscrições para 2026 será anunciado em breve pelo Colégio Ser!.')" class="schedule-item bg-white p-6 rounded-2xl border border-gray-100 cursor-pointer text-center shadow-sm">
-                    <div class="w-12 h-12 un-blue text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold">1</div>
-                    <h5 class="font-bold mb-2">Inscrições</h5>
-                    <p class="text-xs text-gray-400 uppercase">Fase Inicial</p>
+            <div class="grid md:grid-cols-4 gap-8 relative">
+                <!-- Linha condutora visível apenas no Desktop -->
+                <div class="hidden md:block timeline-line"></div>
+                
+                <div onclick="openModal('Fase de Inscrições', 'As datas de matrícula para as delegações serão emitidas em circular pelo Colégio Ser!.')" class="schedule-item relative z-10 bg-white p-8 rounded-xl border border-slate-100 text-center shadow-sm">
+                    <div class="w-12 h-12 bg-slate-800 text-white rounded-full flex items-center justify-center mx-auto mb-6 font-bold shadow-md border-4 border-white">I</div>
+                    <h5 class="font-bold mb-2 text-slate-800">Inscrições Abertas</h5>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-widest font-medium">Credenciamento</p>
                 </div>
-                <div onclick="openModal('Entrega de DPOs', 'O prazo para entrega de Documentos de Posição Oficial (DPOs) ainda não foi definido.')" class="schedule-item bg-white p-6 rounded-2xl border border-gray-100 cursor-pointer text-center shadow-sm">
-                    <div class="w-12 h-12 un-blue text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold">2</div>
-                    <h5 class="font-bold mb-2">Entrega DPOs</h5>
-                    <p class="text-xs text-gray-400 uppercase">Preparação</p>
+                <div onclick="openModal('Entrega de DPOs', 'O conselho validará o prazo limite para a submissão dos Documentos de Posição Oficial.')" class="schedule-item relative z-10 bg-white p-8 rounded-xl border border-slate-100 text-center shadow-sm">
+                    <div class="w-12 h-12 bg-slate-800 text-white rounded-full flex items-center justify-center mx-auto mb-6 font-bold shadow-md border-4 border-white">II</div>
+                    <h5 class="font-bold mb-2 text-slate-800">Submissão DPOs</h5>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-widest font-medium">Preparação Técnica</p>
                 </div>
-                <div onclick="openModal('Dias de Debate', 'A data oficial da simulação será confirmada no calendário letivo do Colégio Ser!.')" class="schedule-item bg-white p-6 rounded-2xl border border-gray-100 cursor-pointer text-center shadow-sm">
-                    <div class="w-12 h-12 un-blue text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold">3</div>
-                    <h5 class="font-bold mb-2">Debates</h5>
-                    <p class="text-xs text-gray-400 uppercase">S!mun 2026</p>
+                <div onclick="openModal('Sessões de Debate', 'A sessão plenária acontecerá no complexo de eventos do Colégio Ser!.')" class="schedule-item relative z-10 bg-white p-8 rounded-xl border border-slate-100 text-center shadow-sm">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-6 font-bold shadow-md border-4 border-white scale-110">III</div>
+                    <h5 class="font-bold mb-2 text-blue-600">Sessões Plenárias</h5>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-widest font-medium">A Conferência</p>
                 </div>
-                <div onclick="openModal('Cerimônia Final', 'A cerimônia de encerramento e entrega de certificados ocorrerá ao final do evento.')" class="schedule-item bg-white p-6 rounded-2xl border border-gray-100 cursor-pointer text-center shadow-sm">
-                    <div class="w-12 h-12 un-blue text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold">4</div>
-                    <h5 class="font-bold mb-2">Encerramento</h5>
-                    <p class="text-xs text-gray-400 uppercase">Premiação</p>
+                <div onclick="openModal('Cerimônia Final', 'Resoluções finais e homenagens aos delegados destaque.')" class="schedule-item relative z-10 bg-white p-8 rounded-xl border border-slate-100 text-center shadow-sm">
+                    <div class="w-12 h-12 bg-slate-800 text-white rounded-full flex items-center justify-center mx-auto mb-6 font-bold shadow-md border-4 border-white">IV</div>
+                    <h5 class="font-bold mb-2 text-slate-800">Encerramento</h5>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-widest font-medium">Votação & Premiação</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Secção Imagens S!mun 2025 -->
-    <section id="imagens-2025" class="py-24 bg-gray-900 text-white">
+    <section id="imagens-2025" class="py-32 bg-[#0f172a] text-white">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 border-b border-slate-800 pb-10">
                 <div>
-                    <h3 class="text-4xl font-bold mb-2 text-white">S!mun 2025</h3>
-                    <p class="text-gray-400 uppercase tracking-widest text-sm">Registros Históricos do Colégio Ser!</p>
+                    <span class="text-xs font-semibold text-slate-400 tracking-[0.2em] uppercase mb-4 block">Acervo Documental</span>
+                    <h3 class="text-4xl md:text-5xl font-bold playfair text-white">Registros S!mun 2025</h3>
                 </div>
-                <div class="w-20 h-1 un-blue mb-2"></div>
+                <div class="text-right">
+                    <p class="text-slate-400 font-light max-w-sm text-sm">Momentos que definiram a excelência do debate e da formulação de políticas no Colégio Ser!.</p>
+                </div>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="gallery-item group relative overflow-hidden rounded-2xl aspect-square bg-gray-800 flex items-center justify-center">
-                    <img src="https://lh3.googleusercontent.com/d/1kEs8SBA3AKib6wvymbDE81PFnK1fbFyb" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition p-4 flex items-end">
-                        <span class="text-xs font-bold uppercase tracking-wider">Momento Histórico</span>
+            <!-- Galeria com formato cinematográfico editorial -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Foto 1 -->
+                <div class="gallery-item group relative overflow-hidden rounded-xl aspect-video bg-slate-800 flex items-center justify-center shadow-2xl">
+                    <img src="https://lh3.googleusercontent.com/d/1kEs8SBA3AKib6wvymbDE81PFnK1fbFyb" class="w-full h-full object-cover group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity p-8 flex items-end">
+                        <div>
+                            <span class="text-[10px] text-blue-400 font-bold uppercase tracking-[0.2em] block mb-2">Momento Histórico</span>
+                            <h5 class="text-xl playfair text-white">Abertura da Assembleia</h5>
+                        </div>
                     </div>
                 </div>
-                <div class="gallery-item group relative overflow-hidden rounded-2xl aspect-square bg-gray-800 flex items-center justify-center">
-                    <img src="https://lh3.googleusercontent.com/d/1yJN3TUlQ5vd-oPEpY7_1Ou2OiZz8iTog" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition p-4 flex items-end">
-                        <span class="text-xs font-bold uppercase tracking-wider">Debates em Ação</span>
+                <!-- Foto 2 -->
+                <div class="gallery-item group relative overflow-hidden rounded-xl aspect-video bg-slate-800 flex items-center justify-center shadow-2xl">
+                    <img src="https://lh3.googleusercontent.com/d/1yJN3TUlQ5vd-oPEpY7_1Ou2OiZz8iTog" class="w-full h-full object-cover group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity p-8 flex items-end">
+                        <div>
+                            <span class="text-[10px] text-blue-400 font-bold uppercase tracking-[0.2em] block mb-2">Sessão Plenária</span>
+                            <h5 class="text-xl playfair text-white">Debates em Ação</h5>
+                        </div>
                     </div>
                 </div>
-                <div class="gallery-item group relative overflow-hidden rounded-2xl aspect-square bg-gray-800 flex items-center justify-center">
-                    <img src="https://lh3.googleusercontent.com/d/1xddCv1B2MFV3f8Mc7uKRlCKo4dAp8uQQ" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition p-4 flex items-end">
-                        <span class="text-xs font-bold uppercase tracking-wider">Delegação Ser!</span>
+                <!-- Foto 3 -->
+                <div class="gallery-item group relative overflow-hidden rounded-xl aspect-video bg-slate-800 flex items-center justify-center shadow-2xl">
+                    <img src="https://lh3.googleusercontent.com/d/1xddCv1B2MFV3f8Mc7uKRlCKo4dAp8uQQ" class="w-full h-full object-cover group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity p-8 flex items-end">
+                        <div>
+                            <span class="text-[10px] text-blue-400 font-bold uppercase tracking-[0.2em] block mb-2">Diplomacia</span>
+                            <h5 class="text-xl playfair text-white">Delegação Ser!</h5>
+                        </div>
                     </div>
                 </div>
-                <div class="gallery-item group relative overflow-hidden rounded-2xl aspect-square bg-gray-800 flex items-center justify-center">
-                    <img src="https://lh3.googleusercontent.com/d/1PpYA5jgY9Azt9uuuqxkz_Q-bv7opylV2" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition p-4 flex items-end">
-                        <span class="text-xs font-bold uppercase tracking-wider">Encerramento 2025</span>
+                <!-- Foto 4 -->
+                <div class="gallery-item group relative overflow-hidden rounded-xl aspect-video bg-slate-800 flex items-center justify-center shadow-2xl">
+                    <img src="https://lh3.googleusercontent.com/d/1PpYA5jgY9Azt9uuuqxkz_Q-bv7opylV2" class="w-full h-full object-cover group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity p-8 flex items-end">
+                        <div>
+                            <span class="text-[10px] text-blue-400 font-bold uppercase tracking-[0.2em] block mb-2">Conclusão</span>
+                            <h5 class="text-xl playfair text-white">Resoluções Finais 2025</h5>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -512,18 +586,18 @@
     </section>
 
     <!-- Rodapé -->
-    <footer class="bg-gray-900 text-white pt-20 pb-10 border-t border-gray-800">
+    <footer class="bg-[#0b1120] text-slate-400 pt-24 pb-12 border-t border-slate-800">
         <div class="container mx-auto px-6 text-center">
             <img src="https://lh3.googleusercontent.com/d/1x0CMSY5KBchMh7nQ7OGh3RYxx9kIloLw" 
                  alt="S!mun Logo" 
-                 class="h-12 mx-auto mb-8 brightness-0 invert opacity-60">
-            <p class="text-gray-500 text-sm max-w-lg mx-auto mb-12">Simulação das Nações Unidas do Colégio Ser!. Um compromisso com a formação de cidadãos globais e conscientes.</p>
-            <div class="flex justify-center gap-8 text-2xl mb-12 text-gray-400">
-                <a href="https://www.instagram.com/colegio_ser/" target="_blank" class="hover:text-pink-500 transition"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.youtube.com/colegiosersorocaba" target="_blank" class="hover:text-red-500 transition"><i class="fab fa-youtube"></i></a>
-                <a href="https://pt-br.facebook.com/ColegioSer/" target="_blank" class="hover:text-blue-600 transition"><i class="fab fa-facebook"></i></a>
+                 class="h-10 mx-auto mb-8 brightness-0 invert opacity-50">
+            <p class="text-sm max-w-lg mx-auto mb-10 font-light leading-relaxed">Simulação das Nações Unidas do Colégio Ser!.<br>Um compromisso estrutural com a formação de cidadãos globais conscientes e diplomáticos.</p>
+            <div class="flex justify-center gap-10 text-xl mb-16">
+                <a href="https://www.instagram.com/colegio_ser/" target="_blank" class="hover:text-pink-500 transition-colors"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/colegiosersorocaba" target="_blank" class="hover:text-red-500 transition-colors"><i class="fab fa-youtube"></i></a>
+                <a href="https://pt-br.facebook.com/ColegioSer/" target="_blank" class="hover:text-blue-500 transition-colors"><i class="fab fa-facebook-f"></i></a>
             </div>
-            <div class="text-xs text-gray-600 border-t border-gray-800 pt-8">
+            <div class="text-[10px] uppercase tracking-[0.2em] border-t border-slate-800/50 pt-8 opacity-60">
                 &copy; 2026 Colégio Ser!. Todos os direitos reservados.
             </div>
         </div>
@@ -553,10 +627,11 @@
             menu.classList.toggle('w-full');
             menu.classList.toggle('bg-white');
             menu.classList.toggle('p-6');
-            menu.classList.toggle('shadow-2xl');
+            menu.classList.toggle('shadow-xl');
+            menu.classList.toggle('border-b');
         }
 
-        // Smooth Scroll
+        // Navegação suave aprimorada
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
@@ -564,7 +639,12 @@
                 const target = document.querySelector(targetId);
                 if (target) {
                     e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth' });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    
+                    // Fecha menu mobile ao clicar
+                    if(window.innerWidth < 768) {
+                        toggleMenu();
+                    }
                 }
             });
         });
