@@ -204,10 +204,10 @@
                 </div>
 
                 <h3 id="modal-title" class="text-3xl font-bold mb-4 text-slate-900 leading-tight playfair">Acesso em Breve</h3>
-                <p id="modal-desc" class="text-slate-500 mb-10 leading-relaxed font-light">O Colégio Ser! está elaborando as diretrizes oficiais para este comitê.</p>
+                <p id="modal-desc" class="text-slate-500 mb-10 leading-relaxed font-light">O Colégio Ser! está elaborando as diretrizes oficiais.</p>
                 
                 <button onclick="closeModal()" class="un-blue text-white w-full py-4 rounded-xl font-medium tracking-wide hover:bg-blue-800 transition-colors shadow-md flex items-center justify-center gap-2">
-                    Retornar à página
+                    Retornar
                 </button>
             </div>
         </div>
@@ -222,7 +222,7 @@
     <!-- Navegação -->
     <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-200">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-5">
+            <div class="flex items-center gap-5 cursor-pointer" onclick="closeCommitteePage()">
                 <img src="https://lh3.googleusercontent.com/d/1x0CMSY5KBchMh7nQ7OGh3RYxx9kIloLw" 
                      alt="S!mun Logo" 
                      class="logo-img"
@@ -235,12 +235,12 @@
             </div>
             
             <div id="desktop-menu" class="hidden md:flex gap-8 font-medium text-xs uppercase tracking-wide text-slate-600 items-center">
-                <a href="#home" class="hover:text-blue-600 transition-colors">Início</a>
-                <a href="#sobre" class="hover:text-blue-600 transition-colors">O Evento</a>
-                <a href="#comites" class="hover:text-blue-600 transition-colors">Comitês</a>
-                <a href="#noticias" class="hover:text-blue-600 transition-colors">Notícias</a>
-                <a href="#cronograma" class="hover:text-blue-600 transition-colors">Agenda</a>
-                <a href="#imagens-2025" class="hover:text-blue-600 transition-colors">Galeria</a>
+                <a href="#home" class="hover:text-blue-600 transition-colors nav-link" onclick="closeCommitteePage()">Início</a>
+                <a href="#sobre" class="hover:text-blue-600 transition-colors nav-link" onclick="closeCommitteePage()">O Evento</a>
+                <a href="#comites" class="hover:text-blue-600 transition-colors nav-link" onclick="closeCommitteePage()">Comitês</a>
+                <a href="#noticias" class="hover:text-blue-600 transition-colors nav-link" onclick="closeCommitteePage()">Notícias</a>
+                <a href="#cronograma" class="hover:text-blue-600 transition-colors nav-link" onclick="closeCommitteePage()">Agenda</a>
+                <a href="#imagens-2025" class="hover:text-blue-600 transition-colors nav-link" onclick="closeCommitteePage()">Galeria</a>
                 <a href="#" class="border border-blue-600 text-blue-600 px-6 py-2 rounded hover:bg-blue-600 hover:text-white transition-all">Inscrições</a>
             </div>
 
@@ -250,340 +250,376 @@
         </div>
     </nav>
 
-    <!-- Secção Hero -->
-    <section id="home" class="h-[80vh] flex items-center text-white px-6">
-        <div class="container mx-auto hero-content fade-in">
-            <div class="max-w-3xl">
-                <div class="inline-flex items-center gap-3 mb-6">
-                    <span class="w-8 h-[1px] bg-blue-400"></span>
-                    <span class="text-xs font-medium uppercase tracking-[0.3em] text-blue-300">Resolução 2026</span>
-                </div>
-                <h2 class="text-5xl md:text-7xl font-bold mb-8 leading-tight playfair text-white">ONU para além das guerras</h2>
-                <p class="text-lg md:text-xl mb-12 text-slate-300 leading-relaxed font-light max-w-2xl">
-                    Debatendo as crises invisíveis e os desafios estruturais que definem o desenvolvimento diplomático e global no Colégio Ser!.
-                </p>
-                <div class="flex flex-wrap gap-6">
-                    <a href="#comites" class="bg-white text-slate-900 px-8 py-4 rounded font-medium text-sm hover:bg-slate-100 transition-colors flex items-center gap-3 uppercase tracking-wide">
-                        Explorar Comitês <i class="fas fa-arrow-down text-blue-600"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Secção Sobre -->
-    <section id="sobre" class="py-32 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-20 items-center">
-                <div class="pr-0 lg:pr-10">
-                    <h3 class="text-xs font-semibold text-blue-600 tracking-[0.2em] uppercase mb-4">Experiência Diplomática</h3>
-                    <h4 class="text-4xl md:text-5xl font-bold mb-8 text-slate-900 playfair leading-tight">Educação que forma líderes globais</h4>
-                    <p class="text-lg text-slate-600 leading-relaxed mb-6 font-light">
-                        A S!mun 2026 do Colégio Ser! convida os delegados a ampliarem a sua visão sobre o papel das Nações Unidas. Num mundo frequentemente focado em conflitos armados, voltamos nosso olhar analítico para as vitórias e os intensos desafios da diplomacia no meio ambiente, na tecnologia e na garantia dos direitos fundamentais.
+    <!-- VISÃO PRINCIPAL DO SITE -->
+    <div id="main-view">
+        <!-- Secção Hero -->
+        <section id="home" class="h-[80vh] flex items-center text-white px-6">
+            <div class="container mx-auto hero-content fade-in">
+                <div class="max-w-3xl">
+                    <div class="inline-flex items-center gap-3 mb-6">
+                        <span class="w-8 h-[1px] bg-blue-400"></span>
+                        <span class="text-xs font-medium uppercase tracking-[0.3em] text-blue-300">Resolução 2026</span>
+                    </div>
+                    <h2 class="text-5xl md:text-7xl font-bold mb-8 leading-tight playfair text-white">ONU para além das guerras</h2>
+                    <p class="text-lg md:text-xl mb-12 text-slate-300 leading-relaxed font-light max-w-2xl">
+                        Debatendo as crises invisíveis e os desafios estruturais que definem o desenvolvimento diplomático e global no Colégio Ser!.
                     </p>
-                    <div class="grid grid-cols-3 gap-8 border-t border-slate-200 pt-10 mt-10">
-                        <div>
-                            <span class="block text-4xl font-bold text-slate-800 playfair mb-1">05</span>
-                            <span class="text-[10px] text-slate-500 uppercase font-medium tracking-widest">Comitês<br>Oficiais</span>
-                        </div>
-                        <div>
-                            <span class="block text-4xl font-bold text-slate-800 playfair mb-1">2026</span>
-                            <span class="text-[10px] text-slate-500 uppercase font-medium tracking-widest">Ano<br>Letivo</span>
-                        </div>
-                        <div>
-                            <span class="block text-4xl font-bold text-slate-800 playfair mb-1">Ser!</span>
-                            <span class="text-[10px] text-slate-500 uppercase font-medium tracking-widest">Excelência<br>Acadêmica</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="relative">
-                    <div class="absolute -top-8 -right-8 w-64 h-64 bg-slate-50 rounded-full z-0"></div>
-                    <div class="absolute -bottom-8 -left-8 w-32 h-32 border border-blue-200 rounded-full z-0"></div>
-                    <!-- Imagem com proporção editorial e borda refinada -->
-                    <div class="relative z-10 bg-white p-3 shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-2xl">
-                        <img src="https://lh3.googleusercontent.com/d/1zz1FVLETmPPM-1JxWLGOiRNWL8FikQsH" alt="Educação que Transforma" class="w-full aspect-[4/3] object-cover rounded-xl">
+                    <div class="flex flex-wrap gap-6">
+                        <a href="#comites" class="bg-white text-slate-900 px-8 py-4 rounded font-medium text-sm hover:bg-slate-100 transition-colors flex items-center gap-3 uppercase tracking-wide">
+                            Explorar Comitês <i class="fas fa-arrow-down text-blue-600"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Grelha de Comitês -->
-    <section id="comites" class="py-32 bg-slate-50 border-t border-slate-200">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-24 max-w-3xl mx-auto">
-                <span class="text-xs font-semibold text-blue-600 tracking-[0.2em] uppercase mb-4 block">Agenda Oficial</span>
-                <h3 class="text-4xl md:text-5xl font-bold mb-6 playfair text-slate-900">Os Comitês em Pauta</h3>
-                <div class="w-16 h-1 bg-blue-600 mx-auto mb-8"></div>
-                <p class="text-slate-600 text-lg font-light leading-relaxed">Explore os temas cruciais e os complexos desafios diplomáticos que cada delegação enfrentará nesta edição estruturada pelo Colégio Ser!.</p>
+        <!-- Secção Sobre -->
+        <section id="sobre" class="py-32 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-20 items-center">
+                    <div class="pr-0 lg:pr-10">
+                        <h3 class="text-xs font-semibold text-blue-600 tracking-[0.2em] uppercase mb-4">Experiência Diplomática</h3>
+                        <h4 class="text-4xl md:text-5xl font-bold mb-8 text-slate-900 playfair leading-tight">Educação que forma líderes globais</h4>
+                        <p class="text-lg text-slate-600 leading-relaxed mb-6 font-light">
+                            A S!mun 2026 do Colégio Ser! convida os delegados a ampliarem a sua visão sobre o papel das Nações Unidas. Num mundo frequentemente focado em conflitos armados, voltamos nosso olhar analítico para as vitórias e os intensos desafios da diplomacia no meio ambiente, na tecnologia e na garantia dos direitos fundamentais.
+                        </p>
+                        <div class="grid grid-cols-3 gap-8 border-t border-slate-200 pt-10 mt-10">
+                            <div>
+                                <span class="block text-4xl font-bold text-slate-800 playfair mb-1">04</span>
+                                <span class="text-[10px] text-slate-500 uppercase font-medium tracking-widest">Comitês<br>Oficiais</span>
+                            </div>
+                            <div>
+                                <span class="block text-4xl font-bold text-slate-800 playfair mb-1">2026</span>
+                                <span class="text-[10px] text-slate-500 uppercase font-medium tracking-widest">Ano<br>Letivo</span>
+                            </div>
+                            <div>
+                                <span class="block text-4xl font-bold text-slate-800 playfair mb-1">Ser!</span>
+                                <span class="text-[10px] text-slate-500 uppercase font-medium tracking-widest">Excelência<br>Acadêmica</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -top-8 -right-8 w-64 h-64 bg-slate-50 rounded-full z-0"></div>
+                        <div class="absolute -bottom-8 -left-8 w-32 h-32 border border-blue-200 rounded-full z-0"></div>
+                        <div class="relative z-10 bg-white p-3 shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-2xl">
+                            <img src="https://lh3.googleusercontent.com/d/1zz1FVLETmPPM-1JxWLGOiRNWL8FikQsH" alt="Educação que Transforma" class="w-full aspect-[4/3] object-cover rounded-xl">
+                        </div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <!-- PNUMA -->
-                <div onclick="openModal('Comitê PNUMA', 'Os guias oficiais de estudo sobre a crise do Petróleo e Plásticos estão sendo validados pela mesa diretora do Colégio Ser!.')" class="committee-card bg-white p-10 rounded-2xl relative overflow-hidden group">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-green-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-                    <div class="flex justify-between items-center mb-8">
-                        <span class="text-xs font-bold text-slate-400 tracking-[0.2em]">PNUMA</span>
-                        <div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-green-600">
-                            <i class="fas fa-leaf text-xl"></i>
-                        </div>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-4 text-slate-900 playfair">Petróleo e Plásticos</h4>
-                    <p class="text-sm text-slate-600 leading-relaxed mb-8 font-light">Análise do impacto sistêmico nos Oceanos e a busca por regulamentações globais eficazes para a poluição marinha.</p>
-                    <span class="text-xs font-medium text-blue-600 uppercase tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all">Acessar Documento <i class="fas fa-arrow-right"></i></span>
+        <!-- Grelha de Comitês -->
+        <section id="comites" class="py-32 bg-slate-50 border-t border-slate-200">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-24 max-w-3xl mx-auto">
+                    <span class="text-xs font-semibold text-blue-600 tracking-[0.2em] uppercase mb-4 block">Agenda Oficial</span>
+                    <h3 class="text-4xl md:text-5xl font-bold mb-6 playfair text-slate-900">Os Comitês em Pauta</h3>
+                    <div class="w-16 h-1 bg-blue-600 mx-auto mb-8"></div>
+                    <p class="text-slate-600 text-lg font-light leading-relaxed">Explore os temas cruciais e os complexos desafios diplomáticos que cada delegação enfrentará nesta edição estruturada pelo Colégio Ser!.</p>
                 </div>
 
-                <!-- ECOSOC -->
-                <div onclick="openModal('Comitê ECOSOC', 'As diretrizes de debate econômico sobre Medidas Tarifárias estão na fase de revisão final.')" class="committee-card bg-white p-10 rounded-2xl relative overflow-hidden group">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-blue-800 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-                    <div class="flex justify-between items-center mb-8">
-                        <span class="text-xs font-bold text-slate-400 tracking-[0.2em]">ECOSOC</span>
-                        <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-800">
-                            <i class="fas fa-chart-line text-xl"></i>
+                <div class="grid md:grid-cols-2 gap-10">
+                    <!-- ACNUR -->
+                    <div onclick="openCommitteePage('ACNUR')" class="committee-card bg-white p-10 rounded-2xl relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-blue-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                        <div class="flex justify-between items-center mb-8">
+                            <span class="text-xs font-bold text-slate-400 tracking-[0.2em]">ACNUR</span>
+                            <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
+                                <i class="fas fa-hands-helping text-xl"></i>
+                            </div>
                         </div>
+                        <h4 class="text-2xl font-bold mb-4 text-slate-900 playfair">Ações do ICE e CPB na América do Norte</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-8 font-light">Análise das políticas de fronteira: a dicotomia entre crise humanitária severa e a defesa estrutural da soberania nacional.</p>
+                        <span class="text-xs font-medium text-blue-600 uppercase tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all">Acessar Documento Oficial <i class="fas fa-arrow-right"></i></span>
                     </div>
-                    <h4 class="text-2xl font-bold mb-4 text-slate-900 playfair">Medidas Tarifárias</h4>
-                    <p class="text-sm text-slate-600 leading-relaxed mb-8 font-light">Discussão sobre os impactos na macroeconomia global e o rearranjo das delicadas relações diplomáticas.</p>
-                    <span class="text-xs font-medium text-blue-600 uppercase tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all">Acessar Documento <i class="fas fa-arrow-right"></i></span>
+
+                    <!-- FAO -->
+                    <div onclick="openCommitteePage('FAO')" class="committee-card bg-white p-10 rounded-2xl relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-green-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                        <div class="flex justify-between items-center mb-8">
+                            <span class="text-xs font-bold text-slate-400 tracking-[0.2em]">FAO</span>
+                            <div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-green-600">
+                                <i class="fas fa-seedling text-xl"></i>
+                            </div>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-4 text-slate-900 playfair">Bancos de Sementes Comunitários</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-8 font-light">Discussão sobre segurança alimentar, a manutenção da soberania dos agricultores e a conservação da agrobiodiversidade.</p>
+                        <span class="text-xs font-medium text-green-600 uppercase tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all">Acessar Documento Oficial <i class="fas fa-arrow-right"></i></span>
+                    </div>
+
+                    <!-- ONU MULHERES -->
+                    <div onclick="openCommitteePage('ONUMULHERES')" class="committee-card bg-white p-10 rounded-2xl relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-purple-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                        <div class="flex justify-between items-center mb-8">
+                            <span class="text-xs font-bold text-slate-400 tracking-[0.2em]">ONU MULHERES</span>
+                            <div class="w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center text-purple-600">
+                                <i class="fas fa-venus text-xl"></i>
+                            </div>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-4 text-slate-900 playfair">Violência contra Meninas e Mulheres</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-8 font-light">Debate sobre o alarmante cerceamento de direitos básicos e a violência de gênero institucionalizada em regimes totalitários.</p>
+                        <span class="text-xs font-medium text-purple-600 uppercase tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all">Acessar Documento Oficial <i class="fas fa-arrow-right"></i></span>
+                    </div>
+
+                    <!-- CSTD -->
+                    <div onclick="openCommitteePage('CSTD')" class="committee-card bg-white p-10 rounded-2xl relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-cyan-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                        <div class="flex justify-between items-center mb-8">
+                            <span class="text-xs font-bold text-slate-400 tracking-[0.2em]">CSTD</span>
+                            <div class="w-12 h-12 rounded-full bg-cyan-50 flex items-center justify-center text-cyan-600">
+                                <i class="fas fa-microchip text-xl"></i>
+                            </div>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-4 text-slate-900 playfair">Algoritmos Manipulados</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-8 font-light">Investigação profunda sobre a manipulação algorítmica e a sua perigosa interferência direta nos processos democráticos.</p>
+                        <span class="text-xs font-medium text-cyan-600 uppercase tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all">Acessar Documento Oficial <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secção de Notícias (Revistas) -->
+        <section id="noticias" class="py-32 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-24">
+                    <span class="text-xs font-semibold text-blue-600 tracking-[0.2em] uppercase mb-4 block">Publicações Oficiais</span>
+                    <h3 class="text-4xl md:text-5xl font-bold mb-6 playfair text-slate-900">S!MUN News</h3>
+                    <div class="w-16 h-1 bg-blue-600 mx-auto mb-8"></div>
+                    <p class="text-slate-600 text-lg font-light max-w-2xl mx-auto">Explore as análises e editoriais produzidos pelo comitê de imprensa do Colégio Ser!.</p>
                 </div>
 
-                <!-- CDH -->
-                <div onclick="openModal('Comitê CDH', 'A pauta que correlaciona direitos humanos e integração econômica será publicada oficialmente em breve.')" class="committee-card bg-white p-10 rounded-2xl relative overflow-hidden group">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-red-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-                    <div class="flex justify-between items-center mb-8">
-                        <span class="text-xs font-bold text-slate-400 tracking-[0.2em]">CDH</span>
-                        <div class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center text-red-600">
-                            <i class="fas fa-hand-holding-heart text-xl"></i>
-                        </div>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-4 text-slate-900 playfair">Globalização Econômica</h4>
-                    <p class="text-sm text-slate-600 leading-relaxed mb-8 font-light">Debate crítico sobre como a rápida integração econômica mundial compromete ou fomenta os direitos humanos.</p>
-                    <span class="text-xs font-medium text-blue-600 uppercase tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all">Acessar Documento <i class="fas fa-arrow-right"></i></span>
-                </div>
-
-                <!-- UNESCO -->
-                <div onclick="openModal('Comitê UNESCO', 'Os dossiês sobre patrimônio oculto e direitos culturais estão em diagramação.')" class="committee-card bg-white p-10 rounded-2xl relative overflow-hidden group lg:col-span-1">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-amber-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-                    <div class="flex justify-between items-center mb-8">
-                        <span class="text-xs font-bold text-slate-400 tracking-[0.2em]">UNESCO</span>
-                        <div class="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center text-amber-600">
-                            <i class="fas fa-landmark text-xl"></i>
-                        </div>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-4 text-slate-900 playfair">Cultura e Gênero</h4>
-                    <ul class="text-sm text-slate-600 leading-relaxed mb-8 font-light space-y-2">
-                        <li class="flex gap-2"><span class="text-amber-500">•</span> Tráfico ilícito de bens culturais.</li>
-                        <li class="flex gap-2"><span class="text-amber-500">•</span> Proteção dos direitos culturais das mulheres.</li>
-                    </ul>
-                    <span class="text-xs font-medium text-blue-600 uppercase tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all">Acessar Documento <i class="fas fa-arrow-right"></i></span>
-                </div>
-
-                <!-- CSTD -->
-                <div onclick="openModal('Comitê CSTD', 'O documento base de ciência e tecnologia será divulgado após aprovação técnica.')" class="committee-card bg-white p-10 rounded-2xl relative overflow-hidden group lg:col-span-2 flex flex-col justify-center">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-cyan-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
-                        <div class="flex-1">
-                            <div class="flex items-center gap-4 mb-6">
-                                <div class="w-12 h-12 rounded-full bg-cyan-50 flex items-center justify-center text-cyan-600">
-                                    <i class="fas fa-microchip text-xl"></i>
+                <div class="flex flex-wrap justify-center gap-12 md:gap-20">
+                    <div class="news-magazine-container cursor-pointer" onclick="openModal('Publicação em Breve', 'Esta edição da revista S!mun News está sendo diagramada pela equipe de comunicação.')">
+                        <div class="magazine">
+                            <div class="magazine-cover bg-slate-50 border-slate-200 border-l-slate-800">
+                                <i class="fas fa-cog text-4xl text-slate-300 magazine-gear mb-8"></i>
+                                <div class="w-full px-4 mb-2">
+                                    <div class="h-0.5 bg-slate-200 w-full mb-2"></div>
+                                    <div class="h-0.5 bg-slate-200 w-2/3 mx-auto"></div>
                                 </div>
-                                <span class="text-xs font-bold text-slate-400 tracking-[0.2em]">CSTD</span>
+                                <div class="mt-auto border-t border-slate-200 w-full pt-4 text-center">
+                                    <p class="text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em]">S!MUN Vol. I</p>
+                                </div>
                             </div>
-                            <h4 class="text-2xl font-bold mb-4 text-slate-900 playfair">Algoritmos e Democracia</h4>
-                            <p class="text-sm text-slate-600 leading-relaxed font-light max-w-lg">Investigação profunda sobre a manipulação algorítmica em processos eleitorais e os desafios para manter a soberania digital das nações.</p>
+                            <div class="magazine-page text-center">
+                                <div class="opacity-20 flex flex-col items-center">
+                                    <i class="fas fa-align-left text-4xl text-slate-400 mb-6"></i>
+                                    <div class="w-24 h-1 bg-slate-300 rounded mb-2"></div>
+                                    <div class="w-16 h-1 bg-slate-300 rounded"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="shrink-0 pt-4 md:pt-0">
-                            <div class="border border-slate-200 text-slate-500 px-6 py-4 rounded text-xs font-medium uppercase tracking-widest flex items-center gap-3">
-                                <i class="fas fa-lock text-slate-400"></i> Restrito
+                        <p class="mt-8 text-center font-medium text-sm text-slate-600 tracking-wide">Boletim Informativo</p>
+                    </div>
+
+                    <div class="news-magazine-container cursor-pointer" onclick="openModal('Publicação em Breve', 'Esta edição da revista S!mun News está sendo diagramada pela equipe de comunicação.')">
+                        <div class="magazine">
+                            <div class="magazine-cover bg-slate-50 border-slate-200 border-l-blue-600">
+                                <i class="fas fa-cog text-4xl text-slate-300 magazine-gear mb-8"></i>
+                                <div class="w-full px-4 mb-2">
+                                    <div class="h-0.5 bg-slate-200 w-full mb-2"></div>
+                                    <div class="h-0.5 bg-slate-200 w-3/4 mx-auto"></div>
+                                </div>
+                                <div class="mt-auto border-t border-slate-200 w-full pt-4 text-center">
+                                    <p class="text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em]">S!MUN Vol. II</p>
+                                </div>
+                            </div>
+                            <div class="magazine-page text-center">
+                                <div class="opacity-20 flex flex-col items-center">
+                                    <i class="fas fa-globe text-4xl text-blue-600 mb-6"></i>
+                                    <div class="w-24 h-1 bg-slate-300 rounded mb-2"></div>
+                                    <div class="w-16 h-1 bg-slate-300 rounded"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-8 text-center font-medium text-sm text-slate-600 tracking-wide">Análise Diplomática</p>
+                    </div>
+
+                    <div class="news-magazine-container cursor-pointer" onclick="openModal('Publicação em Breve', 'Esta edição da revista S!mun News está sendo diagramada pela equipe de comunicação.')">
+                        <div class="magazine">
+                            <div class="magazine-cover bg-slate-50 border-slate-200 border-l-green-600">
+                                <i class="fas fa-cog text-4xl text-slate-300 magazine-gear mb-8"></i>
+                                <div class="w-full px-4 mb-2">
+                                    <div class="h-0.5 bg-slate-200 w-full mb-2"></div>
+                                    <div class="h-0.5 bg-slate-200 w-1/2 mx-auto"></div>
+                                </div>
+                                <div class="mt-auto border-t border-slate-200 w-full pt-4 text-center">
+                                    <p class="text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em]">S!MUN Vol. III</p>
+                                </div>
+                            </div>
+                            <div class="magazine-page text-center">
+                                <div class="opacity-20 flex flex-col items-center">
+                                    <i class="fas fa-users text-4xl text-green-600 mb-6"></i>
+                                    <div class="w-24 h-1 bg-slate-300 rounded mb-2"></div>
+                                    <div class="w-16 h-1 bg-slate-300 rounded"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-8 text-center font-medium text-sm text-slate-600 tracking-wide">Voz do Delegado</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secção de Cronograma -->
+        <section id="cronograma" class="py-32 bg-slate-50 border-t border-slate-200 overflow-hidden">
+            <div class="container mx-auto px-6 relative">
+                <div class="text-center mb-24 relative z-10">
+                    <span class="text-xs font-semibold text-blue-600 tracking-[0.2em] uppercase mb-4 block">Planejamento Oficial</span>
+                    <h3 class="text-4xl md:text-5xl font-bold mb-6 playfair text-slate-900">Agenda S!mun 2026</h3>
+                    <div class="w-16 h-1 bg-blue-600 mx-auto"></div>
+                </div>
+                
+                <div class="grid md:grid-cols-4 gap-8 relative">
+                    <div class="hidden md:block timeline-line"></div>
+                    
+                    <div onclick="openModal('Fase de Inscrições', 'As datas de matrícula para as delegações serão emitidas em circular pelo Colégio Ser!.')" class="schedule-item relative z-10 bg-white p-8 rounded-xl border border-slate-100 text-center shadow-sm">
+                        <div class="w-12 h-12 bg-slate-800 text-white rounded-full flex items-center justify-center mx-auto mb-6 font-bold shadow-md border-4 border-white">I</div>
+                        <h5 class="font-bold mb-2 text-slate-800">Inscrições Abertas</h5>
+                        <p class="text-[10px] text-slate-500 uppercase tracking-widest font-medium">Credenciamento</p>
+                    </div>
+                    <div onclick="openModal('Entrega de DPOs', 'O conselho validará o prazo limite para a submissão dos Documentos de Posição Oficial.')" class="schedule-item relative z-10 bg-white p-8 rounded-xl border border-slate-100 text-center shadow-sm">
+                        <div class="w-12 h-12 bg-slate-800 text-white rounded-full flex items-center justify-center mx-auto mb-6 font-bold shadow-md border-4 border-white">II</div>
+                        <h5 class="font-bold mb-2 text-slate-800">Submissão DPOs</h5>
+                        <p class="text-[10px] text-slate-500 uppercase tracking-widest font-medium">Preparação Técnica</p>
+                    </div>
+                    <div onclick="openModal('Sessões de Debate', 'A sessão plenária acontecerá no complexo de eventos do Colégio Ser!.')" class="schedule-item relative z-10 bg-white p-8 rounded-xl border border-slate-100 text-center shadow-sm">
+                        <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-6 font-bold shadow-md border-4 border-white scale-110">III</div>
+                        <h5 class="font-bold mb-2 text-blue-600">Sessões Plenárias</h5>
+                        <p class="text-[10px] text-slate-500 uppercase tracking-widest font-medium">A Conferência</p>
+                    </div>
+                    <div onclick="openModal('Cerimônia Final', 'Resoluções finais e homenagens aos delegados destaque.')" class="schedule-item relative z-10 bg-white p-8 rounded-xl border border-slate-100 text-center shadow-sm">
+                        <div class="w-12 h-12 bg-slate-800 text-white rounded-full flex items-center justify-center mx-auto mb-6 font-bold shadow-md border-4 border-white">IV</div>
+                        <h5 class="font-bold mb-2 text-slate-800">Encerramento</h5>
+                        <p class="text-[10px] text-slate-500 uppercase tracking-widest font-medium">Votação & Premiação</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secção Imagens S!mun 2025 -->
+        <section id="imagens-2025" class="py-32 bg-[#0f172a] text-white">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 border-b border-slate-800 pb-10">
+                    <div>
+                        <span class="text-xs font-semibold text-slate-400 tracking-[0.2em] uppercase mb-4 block">Acervo Documental</span>
+                        <h3 class="text-4xl md:text-5xl font-bold playfair text-white">Registros S!mun 2025</h3>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-slate-400 font-light max-w-sm text-sm">Momentos que definiram a excelência do debate e da formulação de políticas no Colégio Ser!.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="gallery-item group relative overflow-hidden rounded-xl aspect-video bg-slate-800 flex items-center justify-center shadow-2xl">
+                        <img src="https://lh3.googleusercontent.com/d/1kEs8SBA3AKib6wvymbDE81PFnK1fbFyb" class="w-full h-full object-cover group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity p-8 flex items-end">
+                            <div>
+                                <span class="text-[10px] text-blue-400 font-bold uppercase tracking-[0.2em] block mb-2">Momento Histórico</span>
+                                <h5 class="text-xl playfair text-white">Abertura da Assembleia</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item group relative overflow-hidden rounded-xl aspect-video bg-slate-800 flex items-center justify-center shadow-2xl">
+                        <img src="https://lh3.googleusercontent.com/d/1yJN3TUlQ5vd-oPEpY7_1Ou2OiZz8iTog" class="w-full h-full object-cover group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity p-8 flex items-end">
+                            <div>
+                                <span class="text-[10px] text-blue-400 font-bold uppercase tracking-[0.2em] block mb-2">Sessão Plenária</span>
+                                <h5 class="text-xl playfair text-white">Debates em Ação</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item group relative overflow-hidden rounded-xl aspect-video bg-slate-800 flex items-center justify-center shadow-2xl">
+                        <img src="https://lh3.googleusercontent.com/d/1xddCv1B2MFV3f8Mc7uKRlCKo4dAp8uQQ" class="w-full h-full object-cover group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity p-8 flex items-end">
+                            <div>
+                                <span class="text-[10px] text-blue-400 font-bold uppercase tracking-[0.2em] block mb-2">Diplomacia</span>
+                                <h5 class="text-xl playfair text-white">Delegação Ser!</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item group relative overflow-hidden rounded-xl aspect-video bg-slate-800 flex items-center justify-center shadow-2xl">
+                        <img src="https://lh3.googleusercontent.com/d/1PpYA5jgY9Azt9uuuqxkz_Q-bv7opylV2" class="w-full h-full object-cover group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity p-8 flex items-end">
+                            <div>
+                                <span class="text-[10px] text-blue-400 font-bold uppercase tracking-[0.2em] block mb-2">Conclusão</span>
+                                <h5 class="text-xl playfair text-white">Resoluções Finais 2025</h5>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+    </div> <!-- Fim da VISÃO PRINCIPAL -->
+
+    <!-- VISÃO DA PÁGINA DO COMITÊ (Inicialmente Escondida) -->
+    <div id="committee-page-view" class="hidden min-h-screen bg-[#f8fafc]">
+        
+        <!-- Banner de Fundo do Comitê -->
+        <div class="w-full h-64 bg-slate-900 relative">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900 opacity-90"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <i id="cp-bg-icon" class="fas fa-globe text-9xl text-white opacity-5"></i>
             </div>
         </div>
-    </section>
 
-    <!-- Secção de Notícias (Revistas) -->
-    <section id="noticias" class="py-32 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-24">
-                <span class="text-xs font-semibold text-blue-600 tracking-[0.2em] uppercase mb-4 block">Publicações Oficiais</span>
-                <h3 class="text-4xl md:text-5xl font-bold mb-6 playfair text-slate-900">S!MUN News</h3>
-                <div class="w-16 h-1 bg-blue-600 mx-auto mb-8"></div>
-                <p class="text-slate-600 text-lg font-light max-w-2xl mx-auto">Explore as análises e editoriais produzidos pelo comitê de imprensa do Colégio Ser!.</p>
-            </div>
-
-            <div class="flex flex-wrap justify-center gap-12 md:gap-20">
-                <!-- Revista 1 -->
-                <div class="news-magazine-container cursor-pointer" onclick="openModal('Publicação em Breve', 'Esta edição da revista S!mun News está sendo diagramada pela equipe de comunicação.')">
-                    <div class="magazine">
-                        <div class="magazine-cover bg-slate-50 border-slate-200 border-l-slate-800">
-                            <i class="fas fa-cog text-4xl text-slate-300 magazine-gear mb-8"></i>
-                            <div class="w-full px-4 mb-2">
-                                <div class="h-0.5 bg-slate-200 w-full mb-2"></div>
-                                <div class="h-0.5 bg-slate-200 w-2/3 mx-auto"></div>
-                            </div>
-                            <div class="mt-auto border-t border-slate-200 w-full pt-4 text-center">
-                                <p class="text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em]">S!MUN Vol. I</p>
-                            </div>
-                        </div>
-                        <div class="magazine-page text-center">
-                            <div class="opacity-20 flex flex-col items-center">
-                                <i class="fas fa-align-left text-4xl text-slate-400 mb-6"></i>
-                                <div class="w-24 h-1 bg-slate-300 rounded mb-2"></div>
-                                <div class="w-16 h-1 bg-slate-300 rounded"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="mt-8 text-center font-medium text-sm text-slate-600 tracking-wide">Boletim Informativo</p>
+        <section class="container mx-auto px-6 max-w-4xl -mt-32 relative z-10 pb-32">
+            <!-- Botão de Voltar -->
+            <button onclick="closeCommitteePage()" class="mb-8 text-white hover:text-blue-200 transition-colors flex items-center gap-2 font-medium uppercase tracking-widest text-xs bg-slate-800/50 px-4 py-2 rounded-full backdrop-blur-sm">
+                <i class="fas fa-arrow-left"></i> Voltar à Página Inicial
+            </button>
+            
+            <!-- Cabeçalho do Comitê -->
+            <div class="bg-white p-10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] mb-12 border border-slate-100 flex flex-col md:flex-row items-center md:items-start gap-8 text-center md:text-left">
+                <div id="cp-icon-bg" class="w-28 h-28 shrink-0 rounded-full flex items-center justify-center text-5xl shadow-inner border-4 border-white">
+                    <i id="cp-icon" class="fas"></i>
                 </div>
-
-                <!-- Revista 2 -->
-                <div class="news-magazine-container cursor-pointer" onclick="openModal('Publicação em Breve', 'Esta edição da revista S!mun News está sendo diagramada pela equipe de comunicação.')">
-                    <div class="magazine">
-                        <div class="magazine-cover bg-slate-50 border-slate-200 border-l-blue-600">
-                            <i class="fas fa-cog text-4xl text-slate-300 magazine-gear mb-8"></i>
-                            <div class="w-full px-4 mb-2">
-                                <div class="h-0.5 bg-slate-200 w-full mb-2"></div>
-                                <div class="h-0.5 bg-slate-200 w-3/4 mx-auto"></div>
-                            </div>
-                            <div class="mt-auto border-t border-slate-200 w-full pt-4 text-center">
-                                <p class="text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em]">S!MUN Vol. II</p>
-                            </div>
-                        </div>
-                        <div class="magazine-page text-center">
-                            <div class="opacity-20 flex flex-col items-center">
-                                <i class="fas fa-globe text-4xl text-blue-600 mb-6"></i>
-                                <div class="w-24 h-1 bg-slate-300 rounded mb-2"></div>
-                                <div class="w-16 h-1 bg-slate-300 rounded"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="mt-8 text-center font-medium text-sm text-slate-600 tracking-wide">Análise Diplomática</p>
+                <div class="pt-2">
+                    <h2 id="cp-name" class="text-4xl md:text-5xl font-bold playfair text-slate-900 mb-3"></h2>
+                    <p id="cp-fullname" class="text-sm font-medium text-slate-500 uppercase tracking-widest leading-relaxed"></p>
                 </div>
-
-                <!-- Revista 3 -->
-                <div class="news-magazine-container cursor-pointer" onclick="openModal('Publicação em Breve', 'Esta edição da revista S!mun News está sendo diagramada pela equipe de comunicação.')">
-                    <div class="magazine">
-                        <div class="magazine-cover bg-slate-50 border-slate-200 border-l-green-600">
-                            <i class="fas fa-cog text-4xl text-slate-300 magazine-gear mb-8"></i>
-                            <div class="w-full px-4 mb-2">
-                                <div class="h-0.5 bg-slate-200 w-full mb-2"></div>
-                                <div class="h-0.5 bg-slate-200 w-1/2 mx-auto"></div>
-                            </div>
-                            <div class="mt-auto border-t border-slate-200 w-full pt-4 text-center">
-                                <p class="text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em]">S!MUN Vol. III</p>
-                            </div>
-                        </div>
-                        <div class="magazine-page text-center">
-                            <div class="opacity-20 flex flex-col items-center">
-                                <i class="fas fa-users text-4xl text-green-600 mb-6"></i>
-                                <div class="w-24 h-1 bg-slate-300 rounded mb-2"></div>
-                                <div class="w-16 h-1 bg-slate-300 rounded"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="mt-8 text-center font-medium text-sm text-slate-600 tracking-wide">Voz do Delegado</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Secção de Cronograma -->
-    <section id="cronograma" class="py-32 bg-slate-50 border-t border-slate-200 overflow-hidden">
-        <div class="container mx-auto px-6 relative">
-            <div class="text-center mb-24 relative z-10">
-                <span class="text-xs font-semibold text-blue-600 tracking-[0.2em] uppercase mb-4 block">Planejamento Oficial</span>
-                <h3 class="text-4xl md:text-5xl font-bold mb-6 playfair text-slate-900">Agenda S!mun 2026</h3>
-                <div class="w-16 h-1 bg-blue-600 mx-auto"></div>
             </div>
             
-            <div class="grid md:grid-cols-4 gap-8 relative">
-                <!-- Linha condutora visível apenas no Desktop -->
-                <div class="hidden md:block timeline-line"></div>
+            <!-- Sobre o Comitê (ONU Real) -->
+            <div class="mb-16">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                        <i class="fas fa-landmark text-sm"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 playfair">A Missão do Comitê (ONU)</h3>
+                </div>
+                <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-blue-600"></div>
+                    <p id="cp-uninfo" class="text-slate-600 leading-relaxed font-light text-lg"></p>
+                </div>
+            </div>
+            
+            <!-- Pauta S!mun 2026 -->
+            <div class="mb-16">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-white">
+                        <i class="fas fa-file-contract text-sm"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 playfair">Pauta Oficial S!mun 2026</h3>
+                </div>
                 
-                <div onclick="openModal('Fase de Inscrições', 'As datas de matrícula para as delegações serão emitidas em circular pelo Colégio Ser!.')" class="schedule-item relative z-10 bg-white p-8 rounded-xl border border-slate-100 text-center shadow-sm">
-                    <div class="w-12 h-12 bg-slate-800 text-white rounded-full flex items-center justify-center mx-auto mb-6 font-bold shadow-md border-4 border-white">I</div>
-                    <h5 class="font-bold mb-2 text-slate-800">Inscrições Abertas</h5>
-                    <p class="text-[10px] text-slate-500 uppercase tracking-widest font-medium">Credenciamento</p>
-                </div>
-                <div onclick="openModal('Entrega de DPOs', 'O conselho validará o prazo limite para a submissão dos Documentos de Posição Oficial.')" class="schedule-item relative z-10 bg-white p-8 rounded-xl border border-slate-100 text-center shadow-sm">
-                    <div class="w-12 h-12 bg-slate-800 text-white rounded-full flex items-center justify-center mx-auto mb-6 font-bold shadow-md border-4 border-white">II</div>
-                    <h5 class="font-bold mb-2 text-slate-800">Submissão DPOs</h5>
-                    <p class="text-[10px] text-slate-500 uppercase tracking-widest font-medium">Preparação Técnica</p>
-                </div>
-                <div onclick="openModal('Sessões de Debate', 'A sessão plenária acontecerá no complexo de eventos do Colégio Ser!.')" class="schedule-item relative z-10 bg-white p-8 rounded-xl border border-slate-100 text-center shadow-sm">
-                    <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-6 font-bold shadow-md border-4 border-white scale-110">III</div>
-                    <h5 class="font-bold mb-2 text-blue-600">Sessões Plenárias</h5>
-                    <p class="text-[10px] text-slate-500 uppercase tracking-widest font-medium">A Conferência</p>
-                </div>
-                <div onclick="openModal('Cerimônia Final', 'Resoluções finais e homenagens aos delegados destaque.')" class="schedule-item relative z-10 bg-white p-8 rounded-xl border border-slate-100 text-center shadow-sm">
-                    <div class="w-12 h-12 bg-slate-800 text-white rounded-full flex items-center justify-center mx-auto mb-6 font-bold shadow-md border-4 border-white">IV</div>
-                    <h5 class="font-bold mb-2 text-slate-800">Encerramento</h5>
-                    <p class="text-[10px] text-slate-500 uppercase tracking-widest font-medium">Votação & Premiação</p>
+                <h4 id="cp-topictitle" class="text-3xl md:text-4xl font-bold playfair text-slate-900 mb-6 leading-tight"></h4>
+                <p id="cp-topicdesc" class="text-xl text-slate-600 leading-relaxed font-light mb-10"></p>
+                
+                <!-- Guia de Estudos Botão -->
+                <div class="bg-slate-100 p-8 rounded-2xl border border-slate-200 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div>
+                        <h5 class="font-bold text-slate-800 mb-1">Guia de Estudos</h5>
+                        <p class="text-sm text-slate-500 font-light">Material de apoio oficial do Colégio Ser!</p>
+                    </div>
+                    <button onclick="openModal('Em Desenvolvimento', 'O guia de estudos deste comitê será publicado oficialmente em breve pela coordenação da S!mun.')" class="w-full md:w-auto bg-blue-600 text-white px-8 py-4 rounded-xl font-medium tracking-wide hover:bg-blue-800 transition-colors shadow-md flex items-center justify-center gap-3">
+                        <i class="fas fa-lock"></i> Acesso Restrito
+                    </button>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Secção Imagens S!mun 2025 -->
-    <section id="imagens-2025" class="py-32 bg-[#0f172a] text-white">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 border-b border-slate-800 pb-10">
-                <div>
-                    <span class="text-xs font-semibold text-slate-400 tracking-[0.2em] uppercase mb-4 block">Acervo Documental</span>
-                    <h3 class="text-4xl md:text-5xl font-bold playfair text-white">Registros S!mun 2025</h3>
-                </div>
-                <div class="text-right">
-                    <p class="text-slate-400 font-light max-w-sm text-sm">Momentos que definiram a excelência do debate e da formulação de políticas no Colégio Ser!.</p>
-                </div>
-            </div>
-
-            <!-- Galeria com formato cinematográfico editorial -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Foto 1 -->
-                <div class="gallery-item group relative overflow-hidden rounded-xl aspect-video bg-slate-800 flex items-center justify-center shadow-2xl">
-                    <img src="https://lh3.googleusercontent.com/d/1kEs8SBA3AKib6wvymbDE81PFnK1fbFyb" class="w-full h-full object-cover group-hover:scale-105 opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity p-8 flex items-end">
-                        <div>
-                            <span class="text-[10px] text-blue-400 font-bold uppercase tracking-[0.2em] block mb-2">Momento Histórico</span>
-                            <h5 class="text-xl playfair text-white">Abertura da Assembleia</h5>
-                        </div>
-                    </div>
-                </div>
-                <!-- Foto 2 -->
-                <div class="gallery-item group relative overflow-hidden rounded-xl aspect-video bg-slate-800 flex items-center justify-center shadow-2xl">
-                    <img src="https://lh3.googleusercontent.com/d/1yJN3TUlQ5vd-oPEpY7_1Ou2OiZz8iTog" class="w-full h-full object-cover group-hover:scale-105 opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity p-8 flex items-end">
-                        <div>
-                            <span class="text-[10px] text-blue-400 font-bold uppercase tracking-[0.2em] block mb-2">Sessão Plenária</span>
-                            <h5 class="text-xl playfair text-white">Debates em Ação</h5>
-                        </div>
-                    </div>
-                </div>
-                <!-- Foto 3 -->
-                <div class="gallery-item group relative overflow-hidden rounded-xl aspect-video bg-slate-800 flex items-center justify-center shadow-2xl">
-                    <img src="https://lh3.googleusercontent.com/d/1xddCv1B2MFV3f8Mc7uKRlCKo4dAp8uQQ" class="w-full h-full object-cover group-hover:scale-105 opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity p-8 flex items-end">
-                        <div>
-                            <span class="text-[10px] text-blue-400 font-bold uppercase tracking-[0.2em] block mb-2">Diplomacia</span>
-                            <h5 class="text-xl playfair text-white">Delegação Ser!</h5>
-                        </div>
-                    </div>
-                </div>
-                <!-- Foto 4 -->
-                <div class="gallery-item group relative overflow-hidden rounded-xl aspect-video bg-slate-800 flex items-center justify-center shadow-2xl">
-                    <img src="https://lh3.googleusercontent.com/d/1PpYA5jgY9Azt9uuuqxkz_Q-bv7opylV2" class="w-full h-full object-cover group-hover:scale-105 opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity p-8 flex items-end">
-                        <div>
-                            <span class="text-[10px] text-blue-400 font-bold uppercase tracking-[0.2em] block mb-2">Conclusão</span>
-                            <h5 class="text-xl playfair text-white">Resoluções Finais 2025</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div> <!-- Fim da VISÃO DA PÁGINA DO COMITÊ -->
 
     <!-- Rodapé -->
     <footer class="bg-[#0b1120] text-slate-400 pt-24 pb-12 border-t border-slate-800">
@@ -604,6 +640,90 @@
     </footer>
 
     <script>
+        // Dados oficiais da ONU e Pautas da S!mun 2026 para cada Comitê
+        const committeeData = {
+            'ACNUR': {
+                name: 'ACNUR',
+                fullName: 'Alto Comissariado das Nações Unidas para os Refugiados',
+                icon: 'fa-hands-helping',
+                bgClass: 'bg-blue-100',
+                textClass: 'text-blue-700',
+                unInfo: 'Criado em 1950 logo após a Segunda Guerra Mundial, o ACNUR (Agência da ONU para Refugiados) atua mundialmente para salvar vidas, proteger os direitos e construir um futuro melhor para refugiados, comunidades deslocadas à força e pessoas apátridas. A agência garante que todos tenham o direito de buscar asilo e encontrar refúgio seguro, após fugirem de violência, perseguição ou guerra.',
+                topicTitle: 'Ações do ICE e CPB na América do Norte',
+                topicDesc: 'Neste comitê da S!mun 2026, os delegados realizarão uma análise profunda das políticas de controle de fronteira nos Estados Unidos e arredores. O debate exigirá diplomacia para solucionar a complexa dicotomia entre as denúncias de crise humanitária severa em abrigos de detenção e os argumentos estatais de defesa estrutural e soberania nacional.'
+            },
+            'FAO': {
+                name: 'FAO',
+                fullName: 'Organização das Nações Unidas para a Alimentação e a Agricultura',
+                icon: 'fa-seedling',
+                bgClass: 'bg-green-100',
+                textClass: 'text-green-700',
+                unInfo: 'Fundada em 1945, a FAO é a agência especializada da ONU que lidera os esforços internacionais para erradicar a fome. O seu objetivo primordial é alcançar a segurança alimentar para todos, garantindo que as populações tenham acesso regular e ininterrupto a alimentos de alta qualidade suficientes para levar uma vida ativa, próspera e saudável no campo e nas cidades.',
+                topicTitle: 'Bancos de Sementes Comunitários e Internacionais',
+                topicDesc: 'Os delegados da FAO debaterão a importância estratégica dos bancos de sementes frente às mudanças climáticas extremas. A pauta engloba a garantia da segurança alimentar mundial, a proteção da soberania e subsistência dos pequenos agricultores, e a imperativa conservação da agrobiodiversidade contra a homogeneização de cultivos.'
+            },
+            'ONUMULHERES': {
+                name: 'ONU MULHERES',
+                fullName: 'Entidade das Nações Unidas para a Igualdade de Gênero e o Empoderamento',
+                icon: 'fa-venus',
+                bgClass: 'bg-purple-100',
+                textClass: 'text-purple-700',
+                unInfo: 'Criada pela Assembleia Geral em 2010, a ONU Mulheres é a entidade dedicada exclusivamente à igualdade de gênero e ao empoderamento feminino. A organização trabalha mundialmente para acelerar o progresso na melhoria das condições de vida de mulheres e meninas, assegurando sua participação política, independência econômica e o direito de viver livres de violência e discriminação.',
+                topicTitle: 'Violência contra Meninas e Mulheres',
+                topicDesc: 'Este comitê focará no alarmante cenário do cerceamento de direitos básicos e da violência de gênero institucionalizada, com ênfase particular em como essas violações ocorrem e são sistematicamente acobertadas em regimes políticos totalitários ou extremistas. Os delegados deverão desenhar mecanismos de proteção internacional efetivos.'
+            },
+            'CSTD': {
+                name: 'CSTD',
+                fullName: 'Comissão de Ciência e Tecnologia para o Desenvolvimento',
+                icon: 'fa-microchip',
+                bgClass: 'bg-cyan-100',
+                textClass: 'text-cyan-700',
+                unInfo: 'A CSTD é um órgão subsidiário vital do Conselho Econômico e Social (ECOSOC). Serve como o principal fórum das Nações Unidas para o diálogo estruturado sobre ciência, tecnologia, inovação e suas implicações socioeconômicas. O comitê avalia tendências e orienta políticas globais para garantir que a tecnologia seja usada de forma ética para o desenvolvimento humano sustentável.',
+                topicTitle: 'Algoritmos Manipulados',
+                topicDesc: 'Os diplomatas enfrentarão um dos desafios mais modernos e invisíveis do século XXI: a interferência direta de algoritmos manipulados (por big techs ou nações hostis) nos processos democráticos globais. O comitê exigirá a formulação de tratados para defender a soberania eleitoral sem ferir os princípios de acesso aberto e liberdade na internet.'
+            }
+        };
+
+        // Funções de Transição de Visualização (Main <-> Committee Page)
+        function openCommitteePage(committeeId) {
+            const data = committeeData[committeeId];
+            if (!data) return;
+
+            // Esconder visão principal, mostrar página do comitê
+            document.getElementById('main-view').classList.add('hidden');
+            document.getElementById('committee-page-view').classList.remove('hidden');
+
+            // Preencher os dados dinamicamente
+            document.getElementById('cp-name').innerText = data.name;
+            document.getElementById('cp-fullname').innerText = data.fullName;
+            document.getElementById('cp-uninfo').innerText = data.unInfo;
+            document.getElementById('cp-topictitle').innerText = data.topicTitle;
+            document.getElementById('cp-topicdesc').innerText = data.topicDesc;
+
+            // Configurar ícones e cores
+            const iconBg = document.getElementById('cp-icon-bg');
+            iconBg.className = `w-28 h-28 shrink-0 rounded-full flex items-center justify-center text-5xl shadow-inner border-4 border-white ${data.bgClass} ${data.textClass}`;
+            
+            const icon = document.getElementById('cp-icon');
+            icon.className = `fas ${data.icon}`;
+            
+            const bgIcon = document.getElementById('cp-bg-icon');
+            bgIcon.className = `fas ${data.icon} text-9xl text-white opacity-5`;
+
+            // Rolar para o topo da página suavemente
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function closeCommitteePage() {
+            // Mostrar visão principal, esconder página do comitê
+            document.getElementById('committee-page-view').classList.add('hidden');
+            document.getElementById('main-view').classList.remove('hidden');
+            
+            // Retorna ao topo ou para a sessão de comitês (opcional)
+            document.getElementById('comites').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Funções de Modal Existentes (Mantidas para Cronograma e Notícias)
         function openModal(title, desc) {
             document.getElementById('modal-title').innerText = title;
             document.getElementById('modal-desc').innerText = desc;
@@ -631,14 +751,20 @@
             menu.classList.toggle('border-b');
         }
 
-        // Navegação suave aprimorada
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        // Navegação suave aprimorada para Links da NavBar
+        document.querySelectorAll('.nav-link').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
                 if (targetId === "#") return;
+                
                 const target = document.querySelector(targetId);
                 if (target) {
                     e.preventDefault();
+                    
+                    // Garante que o site principal está visível ao clicar em links do menu
+                    document.getElementById('committee-page-view').classList.add('hidden');
+                    document.getElementById('main-view').classList.remove('hidden');
+
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     
                     // Fecha menu mobile ao clicar
