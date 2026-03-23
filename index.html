@@ -18,8 +18,8 @@
         
         #home {
             background-color: #0f172a; 
-            background-image: linear-gradient(to right, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.4) 100%), 
-                              url('https://lh3.googleusercontent.com/d/1j6YerPOzrD1SzgSs6Ji8QUwPSxFs8vss');
+            background-image: linear-gradient(to right, rgba(15, 23, 42, 0.8) 0%, rgba(15, 23, 42, 0.3) 100%), 
+                              url('https://lh3.googleusercontent.com/d/12HnG67rj0CE2sTbHuhejKhwfh3ywJ97c');
             background-size: cover; background-position: center; background-repeat: no-repeat;
             background-attachment: scroll; transition: background-image 1s ease-in-out; position: relative;
         }
@@ -45,9 +45,7 @@
         }
         .magazine-page { position: absolute; width: 98%; height: 96%; top: 2%; left: 1%; background: #fafafa; border: 1px solid #f1f5f9; border-radius: 2px 6px 6px 2px; z-index: 1; display: flex; align-items: center; justify-content: center; padding: 20px; }
         .news-magazine-container:hover .magazine-cover { transform: rotateY(-150deg); }
-        .news-magazine-container:hover .magazine-gear { animation: spin-gear 4s linear infinite; }
-        @keyframes spin-gear { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
+        
         #status-modal { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); z-index: 100; align-items: center; justify-content: center; backdrop-filter: blur(12px); }
         
         #cp-header-banner { background-size: cover; background-position: center; transition: background-image 0.5s ease; }
@@ -64,6 +62,13 @@
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.02), 0 4px 12px rgba(0,0,0,0.05);
             border: 1px solid #f1f5f9;
         }
+
+        .gallery-featured-img {
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .gallery-featured-container:hover .gallery-featured-img {
+            transform: scale(1.03);
+        }
     </style>
 </head>
 <body class="text-slate-800">
@@ -72,18 +77,6 @@
     <div id="status-modal" onclick="closeModal()">
         <div class="bg-white p-12 rounded-2xl text-center shadow-2xl max-w-md mx-4 fade-in relative border border-slate-100" onclick="event.stopPropagation()">
             <div class="absolute top-0 left-0 w-full h-2 un-blue"></div>
-            <div class="mb-8 flex justify-center items-center gap-4">
-                <i class="fas fa-cog fa-spin text-3xl text-slate-300"></i>
-                <span class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">Em processo</span>
-            </div>
-            <div class="relative mb-10 flex flex-col items-center">
-                <i class="fas fa-user-tie text-5xl text-slate-700 mb-2"></i>
-                <div class="w-28 h-12 bg-slate-800 rounded-t-sm flex items-center justify-center shadow-lg border-b-4 border-slate-600">
-                    <div class="bg-white p-1.5 rounded-full flex items-center justify-center">
-                        <i class="fas fa-globe-americas text-blue-600 text-lg globe-spin"></i>
-                    </div>
-                </div>
-            </div>
             <h3 id="modal-title" class="text-3xl font-bold mb-4 text-slate-900 playfair">Acesso em Breve</h3>
             <p id="modal-desc" class="text-slate-500 mb-10 font-light">O Colégio Ser! está elaborando as diretrizes oficiais.</p>
             <button onclick="closeModal()" class="un-blue text-white w-full py-4 rounded-xl font-medium hover:bg-blue-800 transition-colors">Voltar</button>
@@ -99,7 +92,7 @@
     <!-- Navegação -->
     <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-200">
         <div class="container mx-auto px-6 py-2 flex justify-between items-center">
-            <div class="flex items-center gap-5 cursor-pointer" onclick="closeCommitteePage()">
+            <div class="flex items-center gap-5 cursor-pointer" onclick="resetViews()">
                 <img src="https://lh3.googleusercontent.com/d/1hv1VXOh_Dk_Ad_nOvf5MHk7q20A57HYM" alt="S!mun Logo" class="logo-img" id="main-logo">
                 <div class="border-l border-slate-300 pl-5">
                     <h1 class="font-bold text-xl leading-none un-blue-text playfair">S!MUN 2026</h1>
@@ -107,10 +100,10 @@
                 </div>
             </div>
             <div id="desktop-menu" class="hidden md:flex gap-8 font-medium text-xs uppercase tracking-wide text-slate-600 items-center">
-                <a href="#home" class="hover:text-blue-600 nav-link" onclick="closeCommitteePage()">Início</a>
-                <a href="#comites" class="hover:text-blue-600 nav-link" onclick="closeCommitteePage()">Comitês</a>
-                <a href="#noticias" class="hover:text-blue-600 nav-link" onclick="closeCommitteePage()">Notícias</a>
-                <a href="#imagens-2025" class="hover:text-blue-600 nav-link" onclick="closeCommitteePage()">Galeria</a>
+                <a href="#home" class="hover:text-blue-600 nav-link" onclick="resetViews()">Início</a>
+                <a href="#comites" class="hover:text-blue-600 nav-link" onclick="resetViews()">Comitês</a>
+                <a href="#noticias" class="hover:text-blue-600 nav-link" onclick="resetViews()">Notícias</a>
+                <a href="#imagens-2025" class="hover:text-blue-600 nav-link" onclick="resetViews()">Galeria</a>
                 <a href="#" class="border border-blue-600 text-blue-600 px-6 py-2 rounded hover:bg-blue-600 hover:text-white transition-all font-semibold">Inscrições</a>
             </div>
             <button class="md:hidden text-2xl un-blue-text" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
@@ -128,6 +121,7 @@
             </div>
         </section>
 
+        <!-- Grade de Comitês -->
         <section id="comites" class="py-32 bg-slate-50 border-t border-slate-200">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-24 max-w-3xl mx-auto">
@@ -146,8 +140,8 @@
                             </div>
                         </div>
                         <h4 class="text-2xl font-bold mb-4 text-slate-900 playfair">Ações do ICE e CPB na América do Norte</h4>
-                        <p class="text-sm text-slate-600 leading-relaxed font-light mb-8">Análise das políticas de fronteira: a dicotomia entre crise humanitária severa e defesa da soberania.</p>
-                        <span class="text-xs font-semibold text-blue-600 uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all">Dossiê do Comitê <i class="fas fa-arrow-right"></i></span>
+                        <p class="text-sm text-slate-600 leading-relaxed font-light mb-8">Análise das políticas de imigração e controle de fronteira sob a ótica dos direitos humanos.</p>
+                        <span class="text-xs font-semibold text-blue-600 uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all font-bold">Ver Detalhes do Comitê <i class="fas fa-arrow-right"></i></span>
                     </div>
 
                     <!-- FAO -->
@@ -159,24 +153,24 @@
                             </div>
                         </div>
                         <h4 class="text-2xl font-bold mb-4 text-slate-900 playfair">Bancos de Sementes Comunitários</h4>
-                        <p class="text-sm text-slate-600 leading-relaxed font-light mb-8">Segurança alimentar, soberania dos agricultores e conservação da agrobiodiversidade global.</p>
-                        <span class="text-xs font-semibold text-blue-600 uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all">Dossiê do Comitê <i class="fas fa-arrow-right"></i></span>
+                        <p class="text-sm text-slate-600 leading-relaxed font-light mb-8">Discussão sobre segurança alimentar, soberania dos agricultores e conservação da agrobiodiversidade.</p>
+                        <span class="text-xs font-semibold text-green-600 uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all font-bold">Ver Detalhes do Comitê <i class="fas fa-arrow-right"></i></span>
                     </div>
 
                     <!-- ONU MULHERES -->
-                    <div onclick="openCommitteePage('ONUMULHERES')" class="committee-card bg-white p-10 rounded-2xl relative overflow-hidden group border-t-4 border-blue-400 shadow-sm">
+                    <div onclick="openCommitteePage('ONUMULHERES')" class="committee-card bg-white p-10 rounded-2xl relative overflow-hidden group border-t-4 border-purple-500 shadow-sm">
                         <div class="flex justify-between items-start mb-8">
                             <span class="text-[10px] font-bold text-slate-400 tracking-[0.3em] uppercase">ONU MULHERES</span>
                             <div class="committee-logo-box">
                                 <img src="https://lh3.googleusercontent.com/d/1VBKEqxd9pOpKl5J0ZpBlEJHL1H8tfrPf" alt="ONU Mulheres Logo" class="w-full h-full object-contain">
                             </div>
                         </div>
-                        <h4 class="text-2xl font-bold mb-4 text-slate-900 playfair">Violência contra Meninas e Mulheres</h4>
+                        <h4 class="text-2xl font-bold mb-4 text-slate-900 playfair text-lg">Violência contra Meninas e Mulheres</h4>
                         <p class="text-sm text-slate-600 leading-relaxed font-light mb-8">Cerceamento de direitos básicos e violência de gênero em regimes totalitários contemporâneos.</p>
-                        <span class="text-xs font-semibold text-blue-500 uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all">Dossiê do Comitê <i class="fas fa-arrow-right"></i></span>
+                        <span class="text-xs font-semibold text-purple-600 uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all font-bold">Ver Detalhes do Comitê <i class="fas fa-arrow-right"></i></span>
                     </div>
 
-                    <!-- CSTD (Logo Atualizado) -->
+                    <!-- CSTD -->
                     <div onclick="openCommitteePage('CSTD')" class="committee-card bg-white p-10 rounded-2xl relative overflow-hidden group border-t-4 border-cyan-500 shadow-sm">
                         <div class="flex justify-between items-start mb-8">
                             <span class="text-[10px] font-bold text-slate-400 tracking-[0.3em] uppercase">CSTD</span>
@@ -186,23 +180,34 @@
                         </div>
                         <h4 class="text-2xl font-bold mb-4 text-slate-900 playfair">Algoritmos Manipulados</h4>
                         <p class="text-sm text-slate-600 leading-relaxed font-light mb-8">Investigação sobre a manipulação algorítmica e a interferência direta nos processos democráticos.</p>
-                        <span class="text-xs font-semibold text-blue-600 uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all">Dossiê do Comitê <i class="fas fa-arrow-right"></i></span>
+                        <span class="text-xs font-semibold text-blue-600 uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all font-bold">Ver Detalhes do Comitê <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Galeria Histórica -->
+        <!-- Galeria S!mun 2025 (Acervo Ser! - EM DESTAQUE) -->
         <section id="imagens-2025" class="py-32 bg-[#0f172a] text-white text-center">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-6 max-w-5xl">
                 <span class="text-xs font-semibold text-blue-400 tracking-[0.3em] uppercase mb-4 block">Acervo Ser!</span>
-                <h3 class="text-4xl md:text-5xl font-bold mb-16 playfair">Registros S!mun 2025</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="gallery-item overflow-hidden rounded-xl aspect-video bg-slate-800"><img src="https://lh3.googleusercontent.com/d/16vhaFKyNwtIhoeRDaZtbQjAtwiMtqpP_" class="w-full h-full object-cover opacity-80 hover:opacity-100 hover:scale-105 transition duration-700 shadow-2xl"></div>
-                    <div class="gallery-item overflow-hidden rounded-xl aspect-video bg-slate-800"><img src="https://lh3.googleusercontent.com/d/11pQIRghiLu5az78Z291038fzfzamLm4L" class="w-full h-full object-cover opacity-80 hover:opacity-100 hover:scale-105 transition duration-700 shadow-2xl"></div>
-                    <div class="gallery-item overflow-hidden rounded-xl aspect-video bg-slate-800"><img src="https://lh3.googleusercontent.com/d/1lirkpo1TmLs7K_uuRkSC_lIkkMGKwjI3" class="w-full h-full object-cover opacity-80 hover:opacity-100 hover:scale-105 transition duration-700 shadow-2xl"></div>
-                    <div class="gallery-item overflow-hidden rounded-xl aspect-video bg-slate-800"><img src="https://lh3.googleusercontent.com/d/1Dh_3aKNHGvo4XjEhagCteUjrdjA3DAp7" class="w-full h-full object-cover opacity-80 hover:opacity-100 hover:scale-105 transition duration-700 shadow-2xl"></div>
+                <h3 class="text-4xl md:text-5xl font-bold mb-8 playfair">Registros S!mun 2025</h3>
+                <p class="text-slate-400 mb-12 font-light max-w-2xl mx-auto italic">Reviva os momentos mais marcantes da última edição da simulação.</p>
+                
+                <!-- Imagem em Destaque -->
+                <div class="gallery-featured-container relative overflow-hidden rounded-2xl aspect-video bg-slate-800 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] mb-12 group">
+                    <img src="https://lh3.googleusercontent.com/d/1uCRSeTJd-UlnwOG3XV0QKRTmOU4H3bPW" class="gallery-featured-img w-full h-full object-cover opacity-90 group-hover:opacity-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60"></div>
+                    <div class="absolute bottom-10 left-10 text-left">
+                        <span class="text-[10px] text-blue-400 font-bold uppercase tracking-[0.2em] block mb-2">Destaque do Ano</span>
+                        <h5 class="text-2xl playfair text-white">Assembleia Geral 2025</h5>
+                    </div>
                 </div>
+
+                <!-- Botão para o Acervo -->
+                <button onclick="openFullGallery()" class="border-2 border-white/20 text-white px-10 py-5 rounded-full hover:bg-white hover:text-slate-900 transition-all font-bold tracking-widest uppercase text-xs flex items-center gap-4 mx-auto group">
+                    Acessar Acervo Completo 
+                    <i class="fas fa-th-large group-hover:rotate-90 transition-transform duration-500"></i>
+                </button>
             </div>
         </section>
     </div>
@@ -213,7 +218,7 @@
             <div class="absolute inset-0 bg-slate-900/60 z-10"></div>
         </div>
         <section class="container mx-auto px-6 max-w-4xl -mt-48 relative z-20 pb-32">
-            <button onclick="closeCommitteePage()" class="mb-10 text-white hover:text-blue-200 transition-colors flex items-center gap-2 font-medium uppercase tracking-widest text-xs bg-slate-800/80 px-6 py-3 rounded-full backdrop-blur-md border border-white/20 shadow-xl">
+            <button onclick="resetViews()" class="mb-10 text-white hover:text-blue-200 transition-colors flex items-center gap-2 font-medium uppercase tracking-widest text-xs bg-slate-800/80 px-6 py-3 rounded-full backdrop-blur-md border border-white/20 shadow-xl">
                 <i class="fas fa-arrow-left text-xs"></i> Voltar para a Conferência
             </button>
             <div class="bg-white p-12 rounded-2xl shadow-2xl mb-12 border border-slate-100 flex flex-col md:flex-row items-center md:items-start gap-12">
@@ -239,18 +244,39 @@
                         Tópico em Discussão
                     </h4>
                     <h4 id="cp-topictitle" class="text-3xl font-bold text-slate-900 mb-8 playfair leading-tight"></h4>
-                    <p id="cp-topicdesc" class="text-xl leading-relaxed font-light mb-12 border-l-4 border-blue-600 pl-10 italic"></p>
-                    <div class="bg-slate-900 text-white p-12 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-10 shadow-2xl relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-blue-600/10 rounded-full -mr-16 -mt-16"></div>
-                        <div class="relative z-10 text-center md:text-left">
-                            <h5 class="text-2xl font-bold playfair mb-2">Guia de Estudos 2026</h5>
-                            <p class="text-slate-400 text-sm font-light">Preparação técnica do Colégio Ser!.</p>
-                        </div>
-                        <button onclick="openModal('Documentação', 'O guia de estudos está sob revisão acadêmica.')" class="bg-blue-600 hover:bg-blue-700 text-white px-12 py-5 rounded-xl font-bold tracking-widest uppercase text-xs transition-all flex items-center justify-center gap-3 shadow-lg">
-                            <i class="fas fa-lock"></i> Material Restrito
-                        </button>
-                    </div>
+                    <p id="cp-topicdesc" class="text-xl leading-relaxed font-light italic border-l-4 border-blue-600 pl-10"></p>
                 </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PÁGINA DO ACERVO COMPLETO (Galeria de 12 fotos) -->
+    <div id="full-gallery-view" class="hidden min-h-screen bg-[#f8fafc]">
+        <header class="py-20 bg-slate-900 text-white text-center">
+            <div class="container mx-auto px-6">
+                <button onclick="resetViews()" class="mb-10 text-blue-400 hover:text-white transition-colors flex items-center gap-2 font-medium uppercase tracking-widest text-xs mx-auto">
+                    <i class="fas fa-arrow-left"></i> Sair da Galeria
+                </button>
+                <h2 class="text-5xl font-bold playfair">Acervo Completo</h2>
+                <p class="mt-4 text-slate-400 uppercase tracking-[0.2em] text-xs">S!mun 2025 — Momentos Memoráveis</p>
+            </div>
+        </header>
+        
+        <section class="py-20 container mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- As 12 Imagens aqui -->
+                <div class="gallery-item overflow-hidden rounded-xl aspect-video bg-white shadow-lg"><img src="https://lh3.googleusercontent.com/d/1uCRSeTJd-UlnwOG3XV0QKRTmOU4H3bPW" class="w-full h-full object-cover hover:scale-105 transition duration-700"></div>
+                <div class="gallery-item overflow-hidden rounded-xl aspect-video bg-white shadow-lg"><img src="https://lh3.googleusercontent.com/d/1UvRG4Q2rkgUNnqWYWsrMtyprHfo2InS_" class="w-full h-full object-cover hover:scale-105 transition duration-700"></div>
+                <div class="gallery-item overflow-hidden rounded-xl aspect-video bg-white shadow-lg"><img src="https://lh3.googleusercontent.com/d/1Y4q4PTpqULzQNRDVCftI0h6-HxQF4G0X" class="w-full h-full object-cover hover:scale-105 transition duration-700"></div>
+                <div class="gallery-item overflow-hidden rounded-xl aspect-video bg-white shadow-lg"><img src="https://lh3.googleusercontent.com/d/1YZjmfNe-HMsgWH3oELsV-xjk_wRzRmLz" class="w-full h-full object-cover hover:scale-105 transition duration-700"></div>
+                <div class="gallery-item overflow-hidden rounded-xl aspect-video bg-white shadow-lg"><img src="https://lh3.googleusercontent.com/d/1YzIFJ16ik7MYSaL5lnrkuol8VOZ60knS" class="w-full h-full object-cover hover:scale-105 transition duration-700"></div>
+                <div class="gallery-item overflow-hidden rounded-xl aspect-video bg-white shadow-lg"><img src="https://lh3.googleusercontent.com/d/1FpBZzECB6aAsYjedHTabFZ4GB90KNmr4" class="w-full h-full object-cover hover:scale-105 transition duration-700"></div>
+                <div class="gallery-item overflow-hidden rounded-xl aspect-video bg-white shadow-lg"><img src="https://lh3.googleusercontent.com/d/13Cigt8DVqnRPDsTOIpH2HmlpdYhLpw9y" class="w-full h-full object-cover hover:scale-105 transition duration-700"></div>
+                <div class="gallery-item overflow-hidden rounded-xl aspect-video bg-white shadow-lg"><img src="https://lh3.googleusercontent.com/d/19UYzEap3nMPZcbLiSdgIjVUStS1q9wPy" class="w-full h-full object-cover hover:scale-105 transition duration-700"></div>
+                <div class="gallery-item overflow-hidden rounded-xl aspect-video bg-white shadow-lg"><img src="https://lh3.googleusercontent.com/d/1j1eWP1r5glOGGPKaLuKmD1CXEiO8kr2v" class="w-full h-full object-cover hover:scale-105 transition duration-700"></div>
+                <div class="gallery-item overflow-hidden rounded-xl aspect-video bg-white shadow-lg"><img src="https://lh3.googleusercontent.com/d/1txFyRgz7wf0F18KpHGDC9gwxgsNGOtsn" class="w-full h-full object-cover hover:scale-105 transition duration-700"></div>
+                <div class="gallery-item overflow-hidden rounded-xl aspect-video bg-white shadow-lg"><img src="https://lh3.googleusercontent.com/d/1Sxwf_9pyrz0Yr7YYaUZlZPooyphrxnht" class="w-full h-full object-cover hover:scale-105 transition duration-700"></div>
+                <div class="gallery-item overflow-hidden rounded-xl aspect-video bg-white shadow-lg"><img src="https://lh3.googleusercontent.com/d/1BcUkDdf85w5D4WdN4Ch0I1a7-83itp5N" class="w-full h-full object-cover hover:scale-105 transition duration-700"></div>
             </div>
         </section>
     </div>
@@ -272,43 +298,43 @@
                 fullName: 'Agência da ONU para Refugiados',
                 logoUrl: 'https://lh3.googleusercontent.com/d/1ERWNhw0IAVc1xcdc4vn0uBjivwtKCEJy',
                 bannerUrl: 'https://lh3.googleusercontent.com/d/11NEUKSodIzVu5vicRYEy3x6wkJx6zNoA',
-                unInfo: 'O ACNUR (Alto Comissariado das Nações Unidas para os Refugiados) é a agência líder mundial dedicada a salvar vidas e proteger os direitos de milhões de pessoas forçadas a deixar suas casas devido a conflitos e perseguições. Atuando em mais de 135 países, fornece assistência emergencial e trabalha para garantir o direito de asilo e refúgio seguro.',
+                unInfo: 'O ACNUR (Alto Comissariado das Nações Unidas para os Refugiados) é a agência líder mundial dedicada a salvar vidas e proteger os direitos de milhões de pessoas forçadas a deixar suas casas devido a conflitos e perseguições.',
                 topicTitle: 'Ações do ICE e CPB na América do Norte',
-                topicDesc: 'Nesta edição, os delegados analisarão as rigorosas políticas de imigração e controle de fronteiras na América do Norte, focando na linha entre segurança nacional e proteção aos direitos humanos fundamentais.'
+                topicDesc: 'Os delegados analisarão as rigorosas políticas de imigração e controle de fronteiras na América do Norte, focando na linha entre segurança nacional e proteção aos direitos humanos fundamentais.'
             },
             'FAO': {
                 name: 'FAO',
                 fullName: 'Organização para a Alimentação e a Agricultura',
                 logoUrl: 'https://lh3.googleusercontent.com/d/1jg04AzhDTaN2Ua_QKH6oMdtgaceo-W7u',
                 bannerUrl: 'https://lh3.googleusercontent.com/d/1yW3ayyuw-kKaIbpkpFEQAP8rB_dIh-Md',
-                unInfo: 'A FAO lidera os esforços internacionais para derrotar a fome. O seu objetivo é alcançar a segurança alimentar para todos e garantir que as pessoas tenham acesso regular a alimentos de alta qualidade suficientes para levar uma vida ativa e saudável.',
+                unInfo: 'A FAO lidera os esforços internacionais para derrotar a fome. O seu objetivo é alcançar a segurança alimentar para todos e garantir o acesso regular a alimentos de alta qualidade.',
                 topicTitle: 'Bancos de Sementes Comunitários',
-                topicDesc: 'Os delegados debaterão a importância estratégica dos bancos de sementes comunitários e internacionais como pilares da segurança alimentar e soberania dos agricultores em tempos de crises climáticas.'
+                topicDesc: 'Os delegados debaterão a importância estratégica dos bancos de sementes comunitários como pilares da segurança alimentar e soberania dos agricultores.'
             },
             'ONUMULHERES': {
                 name: 'ONU MULHERES',
                 fullName: 'Entidade das Nações Unidas para a Igualdade de Gênero',
                 logoUrl: 'https://lh3.googleusercontent.com/d/1VBKEqxd9pOpKl5J0ZpBlEJHL1H8tfrPf',
                 bannerUrl: 'https://lh3.googleusercontent.com/d/1L8kNvaWrApO2qwSNs2eGgqadRDpSwp_E',
-                unInfo: 'A ONU Mulheres trabalha mundialmente para acelerar o progresso na melhoria das condições de vida das mulheres e para responder às suas necessidades, apoiando Estados-membros na implementação de padrões globais de igualdade.',
+                unInfo: 'A ONU Mulheres trabalha mundialmente para acelerar o progresso na melhoria das condições de vida das mulheres e para responder às suas necessidades globais.',
                 topicTitle: 'Violência contra Meninas e Mulheres',
-                topicDesc: 'O comitê focará no cerceamento de direitos básicos e na violência de gênero sistemática em regimes totalitários, buscando protocolos internacionais de proteção.'
+                topicDesc: 'O comitê focará no cerceamento de direitos básicos e na violência de gênero sistemática em regimes totalitários.'
             },
             'CSTD': {
                 name: 'CSTD',
                 fullName: 'Comissão de Ciência e Tecnologia para o Desenvolvimento',
                 logoUrl: 'https://lh3.googleusercontent.com/d/1PCYuEOpJ8NMfStGvo3Ya82XH1uZTEuvF',
                 bannerUrl: 'https://lh3.googleusercontent.com/d/1qFriMt4MJTkmwdTT-IieLLZqNfODaREY',
-                unInfo: 'A CSTD (Commission on Science and Technology for Development) é um órgão subsidiário do ECOSOC que fornece à Assembleia Geral e ao Conselho Econômico e Social aconselhamento de alto nível sobre questões relevantes de ciência e tecnologia. Ela atua como um fórum para o exame de questões científicas e tecnológicas e suas implicações para o desenvolvimento global sustentável.',
+                unInfo: 'A CSTD fornece à Assembleia Geral e ao ECOSOC aconselhamento de alto nível sobre questões relevantes de ciência e tecnologia para o desenvolvimento sustentável.',
                 topicTitle: 'Algoritmos Manipulados',
-                topicDesc: 'Investigação profunda sobre a manipulação algorítmica e a sua interferência direta nos processos democráticos, analisando os desafios da soberania digital no século XXI.'
+                topicDesc: 'Investigação profunda sobre a manipulação algorítmica e a sua interferência direta nos processos democráticos.'
             }
         };
 
         function openCommitteePage(id) {
             const data = committeeData[id];
             if (!data) return;
-            document.getElementById('main-view').classList.add('hidden');
+            hideAllViews();
             document.getElementById('committee-page-view').classList.remove('hidden');
             document.getElementById('cp-name').innerText = data.name;
             document.getElementById('cp-fullname').innerText = data.fullName;
@@ -320,15 +346,48 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function closeCommitteePage() {
-            document.getElementById('committee-page-view').classList.add('hidden');
-            document.getElementById('main-view').classList.remove('hidden');
-            document.getElementById('comites').scrollIntoView({ behavior: 'smooth' });
+        function openFullGallery() {
+            hideAllViews();
+            document.getElementById('full-gallery-view').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function openModal(t, d) { document.getElementById('modal-title').innerText = t; document.getElementById('modal-desc').innerText = d; document.getElementById('status-modal').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
-        function closeModal() { document.getElementById('status-modal').style.display = 'none'; document.body.style.overflow = 'auto'; }
-        function toggleMenu() { const m = document.getElementById('desktop-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); m.classList.toggle('flex-col'); m.classList.toggle('absolute'); m.classList.toggle('top-full'); m.classList.toggle('left-0'); m.classList.toggle('w-full'); m.classList.toggle('bg-white'); m.classList.toggle('p-6'); }
+        function resetViews() {
+            hideAllViews();
+            document.getElementById('main-view').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function hideAllViews() {
+            document.getElementById('main-view').classList.add('hidden');
+            document.getElementById('committee-page-view').classList.add('hidden');
+            document.getElementById('full-gallery-view').classList.add('hidden');
+        }
+
+        function openModal(t, d) { 
+            document.getElementById('modal-title').innerText = t; 
+            document.getElementById('modal-desc').innerText = d; 
+            document.getElementById('status-modal').style.display = 'flex'; 
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeModal() { 
+            document.getElementById('status-modal').style.display = 'none'; 
+            document.body.style.overflow = 'auto'; 
+        }
+
+        function toggleMenu() { 
+            const m = document.getElementById('desktop-menu'); 
+            m.classList.toggle('hidden'); 
+            m.classList.toggle('flex'); 
+            m.classList.toggle('flex-col'); 
+            m.classList.toggle('absolute'); 
+            m.classList.toggle('top-full'); 
+            m.classList.toggle('left-0'); 
+            m.classList.toggle('w-full'); 
+            m.classList.toggle('bg-white'); 
+            m.classList.toggle('p-6'); 
+        }
     </script>
 </body>
 </html>
